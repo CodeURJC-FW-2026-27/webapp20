@@ -1,48 +1,47 @@
-# webapp20
+# **webapp20**
 
-PokeURJC
+# **PokeURJC**
 
-A web application for browsing and selling Pokémon cards.
+> *A web application for browsing and selling Pokémon cards.*
 
-Members
+---
 
-Coordination Tools
+## **Members**
 
-None in use for now.
 
-Functionality
-Main Entity: Pokémon Card
+## **Coordination Tools**
+
+**None in use for now.**
+
+---
+
+## **Functionality**
+
+### **Main Entity: Pokémon Card**
 
 Each Pokémon card will contain the following information:
 
-Name
+- **Name**
+- **Price**
+- **Description**
+- **Pokémon**
+- **Card Type**
+- **Image**
 
-Price
+### **Secondary Entity: Review**
 
-Description
+- **Rating**
 
-Pokémon
+> **Only the main/primary entity will be able to have uploaded images.**
 
-Card Type
+---
 
-Image
+## **Project Description**
 
-Secondary Entity: Review
+**PokeURJC** is a web application focused on **browsing and selling Pokémon cards**.
 
+The application will allow users to **explore a collection of Pokémon cards** and access detailed information about each card, such as its **name, price, description, Pokémon, and card type**.
 
-Rating
+Users will also be able to **add new Pokémon cards** to the application. Each card can have an associated **image** and **reviews from users**.
 
-
-
-Only the main/primary entity (Pokémon Card) will be able to have uploaded images.
-
-Project Description
-
-PokeURJC is a web application focused on browsing and selling Pokémon cards.
-
-The application will allow users to explore a collection of Pokémon cards and access detailed information about each card, such as its name, price, description, Pokémon, and card type.
-
-Users will also be able to add new Pokémon cards to the application. Each card can have an associated image and reviews from users.
-
-The main objective of PokeURJC is to provide a simple and intuitive platform where users can discover, view, and sell Pokémon cards.
-
+The main objective of **PokeURJC** is to provide a **simple and intuitive platform** where users can **discover, view, and sell Pokémon cards**.
