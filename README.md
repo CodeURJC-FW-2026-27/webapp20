@@ -1,18 +1,19 @@
 # webapp20
 
-[PokeURJC]
+PokeURJC
+
+A web application for browsing and selling Pokémon cards.
 
 Members
-
-
 
 Coordination Tools
 
 None in use for now.
 
 Functionality
+Main Entity: Pokémon Card
 
-Main entity: Pokemon Card
+Each Pokémon card will contain the following information:
 
 Name
 
@@ -22,25 +23,26 @@ Description
 
 Pokémon
 
-Card type
+Card Type
 
 Image
 
-Secondary entity: 
+Secondary Entity: Review
 
 
 Rating
 
 
 
-Images: Only the main/primary entity will be able to be uploaded with images.
+Only the main/primary entity (Pokémon Card) will be able to have uploaded images.
 
 Project Description
 
-[PokeURJC] is a web application for browsing and selling Pokemon cards.
+PokeURJC is a web application focused on browsing and selling Pokémon cards.
 
-The application will allow users to view a collection of Pokemon cards and access detailed information about each card, such as its name, price, description and type.
+The application will allow users to explore a collection of Pokémon cards and access detailed information about each card, such as its name, price, description, Pokémon, and card type.
 
-Users will also be able to add new Pokemon cards to the application. Each card can have an associated image and reviews from users.
+Users will also be able to add new Pokémon cards to the application. Each card can have an associated image and reviews from users.
 
-The main objective of the application is to provide a simple platform where users can explore and sell Pokemon cards.
+The main objective of PokeURJC is to provide a simple and intuitive platform where users can discover, view, and sell Pokémon cards.
+
