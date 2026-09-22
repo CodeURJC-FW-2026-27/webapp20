@@ -2,7 +2,7 @@
 
 # **PokeURJC**
 
-> *A web application for browsing and selling Pokémon cards.*
+> *A web application for browsing and selling Pokémon products.*
 --------------------------------------------------------------------------
 ## **Members**
 
@@ -29,7 +29,7 @@
 
 ### **Main Entity: Pokémon Product**
 
-Each Pokémon card will contain the following information:
+Each product will contain the following information:
 
 - **Name**
 - **Price**
