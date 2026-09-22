@@ -4,7 +4,7 @@
 
 > *A web application for browsing and selling Pokémon cards.*
 --------------------------------------------------------------------------
-## Members:
+## **Members**
 
 | Name and Surnames | University Mail | Github Username |
 |-----------|-----------|-----------|
@@ -17,7 +17,6 @@
 
 ---
 
-## **Members**
 
 
 ## **Coordination Tools**
