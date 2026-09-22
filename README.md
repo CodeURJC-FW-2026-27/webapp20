@@ -27,7 +27,7 @@
 
 ## **Functionality**
 
-### **Main Entity: Pokémon Card**
+### **Main Entity: Pokémon Product**
 
 Each Pokémon card will contain the following information:
 
@@ -35,7 +35,7 @@ Each Pokémon card will contain the following information:
 - **Price**
 - **Description**
 - **Pokémon**
-- **Card Type**
+- **Product Type**
 - **Image**
 
 ### **Secondary Entity: Review**
@@ -50,10 +50,10 @@ Each Pokémon card will contain the following information:
 
 ## **Project Description**
 
-**PokeURJC** is a web application focused on **browsing and selling Pokémon cards**.
+**PokeURJC** is a web application focused on **browsing and selling Pokémon products**.
 
-The application will allow users to **explore a collection of Pokémon cards** and access detailed information about each card, such as its **name, price, description, Pokémon, and card type**.
+The application will allow users to **explore a collection of Pokémon related products** and access detailed information about each product, such as its **name, price, description, Pokémon, and product type**.
 
-Users will also be able to **add new Pokémon cards** to the application. Each card can have an associated **image** and **reviews from users**.
+Users will also be able to **add new Pokémon products** to the application. Each card can have an associated **image** and **reviews from users**.
 
-The main objective of **PokeURJC** is to provide a **simple and intuitive platform** where users can **discover, view, and sell Pokémon cards**.
+The main objective of **PokeURJC** is to provide a **simple and intuitive platform** where users can **discover, view, and sell Pokémon products**.
