@@ -3,6 +3,17 @@
 # **PokeURJC**
 
 > *A web application for browsing and selling Pokémon cards.*
+--------------------------------------------------------------------------
+## Members:
+
+| Name and Surnames | University Mail | Github Username |
+|-----------|-----------|-----------|
+| Ignacio Roncero Medina   | i.roncero.2024@alumnos.urjc.es   | NachoRonc   |
+| Rim Afoud  |  r.afoud.2024@alumnos.urjc.es | rimafd  |
+| Sergio Alejandro Romero    | sa.romero.2024@alumnos.urjc.es    | sergioromero2k   |
+| Alvaro Martin Jurado  |  a.martinju.2026@alumnos.urjc.es | AlvaritoMartin87  |
+
+
 
 ---
 
@@ -30,7 +41,9 @@ Each Pokémon card will contain the following information:
 
 ### **Secondary Entity: Review**
 
-- **Rating**
+- Author
+- Rating
+- Date
 
 > **Only the main/primary entity will be able to have uploaded images.**
 
