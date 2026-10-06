@@ -1,0 +1,122 @@
+/* ==========================================================
+   PokeURJC - Base styles shared by all pages
+   ========================================================== */
+
+/* ---------- Color palette ---------- */
+:root {
+  --color-primary: #e3350d; /* Poké Ball red */
+  --color-primary-dark: #b52a0a;
+  --color-secondary: #ffcb05; /* Pikachu yellow */
+  --color-secondary-dark: #e0b000;
+  --color-dark: #1d2c5e; /* Pokémon logo blue */
+  --color-light: #f6f7fb;
+  --color-text: #222222;
+  --radius: 0.75rem;
+}
+
+body {
+  background-color: var(--color-light);
+  color: var(--color-text);
+}
+
+/* ---------- Titles ---------- */
+.section-title {
+  color: var(--color-dark);
+  font-weight: 700;
+  font-size: 1.75rem;
+}
+
+/* ---------- Buttons (same shape and font on every page) ---------- */
+.btn-site-primary,
+.btn-site-secondary {
+  border-radius: var(--radius);
+  font-weight: 600;
+  border: none;
+}
+
+.btn-site-primary {
+  background-color: var(--color-primary);
+  color: #ffffff;
+}
+
+.btn-site-primary:hover {
+  background-color: var(--color-primary-dark);
+  color: #ffffff;
+}
+
+.btn-site-secondary {
+  background-color: var(--color-secondary);
+  color: var(--color-dark);
+}
+
+.btn-site-secondary:hover {
+  background-color: var(--color-secondary-dark);
+  color: var(--color-dark);
+}
+
+/* ---------- Navigation bar ---------- */
+.site-navbar {
+  background-color: var(--color-primary);
+}
+
+.site-navbar .nav-link {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.site-navbar .nav-link:hover,
+.site-navbar .nav-link.active {
+  color: var(--color-secondary);
+}
+
+/* ---------- Hero header ---------- */
+.site-hero {
+  background-color: var(--color-dark);
+  color: #ffffff;
+}
+
+.site-hero .lead {
+  color: var(--color-secondary);
+}
+
+/* ---------- Product cards (main page grid) ---------- */
+.product-card {
+  border: none;
+  border-radius: var(--radius);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Same size for every image, so the grid stays aligned */
+.product-image {
+  aspect-ratio: 4 / 5;
+  object-fit: contain;
+  background-color: #ffffff;
+  padding: 1rem;
+}
+
+.product-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-dark);
+}
+
+.product-price {
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background-color: var(--color-dark);
+  color: #ffffff;
+}
