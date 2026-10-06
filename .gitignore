@@ -1,0 +1,18 @@
+# Environment variables
+.env
+.env.*
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor files (keep shared VS Code settings, e.g. Prettier config)
+.vscode/*
+!.vscode/settings.json
+.idea/
