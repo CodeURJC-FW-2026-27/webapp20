@@ -57,6 +57,42 @@ Only the main entity (**Pokémon Product**) will have an associated image.
 
 ---
 
+## **How to Commit**
+
+### **Before your first commit (only once per computer)**
+
+Activate the team's pre-push reminder:
+```
+git config core.hooksPath .githooks
+```
+Before every push it will ask if you have told the team about your changes. Answer `S` to continue or `N` to cancel.
+
+### **Steps**
+
+1. Check which files you have changed:
+```
+   git status
+```
+2. Add the file you want to save:
+```
+   git add <file>
+```
+3. Commit with a message that explains the change:
+```
+   git commit -m "type(scope): description in English"
+```
+   Examples:
+   - `feat(detail): add reviews list` → something new
+   - `fix(grid): correct columns on mobile` → fix a bug
+   - `style(css): change button colors` → visual change
+   - `docs(readme): add screenshots` → documentation
+4. Push your commits:
+```
+   git push
+```
+
+Make **one commit per change**, not one huge commit at the end of the day.
+
 ## Development Conventions
 * **Commits** follow the Conventional Commits specification, e.g. ``feat(header): add navbar with product categories.``
 * **Code, comments and file names** are written in English. Only texts shown to the user are in Spanish.
