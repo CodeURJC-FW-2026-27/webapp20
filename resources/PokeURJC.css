@@ -11,9 +11,12 @@
   --radius: 0.75rem;
 }
 
+
+
 body {
   background-color: var(--color-light);
   color: var(--color-text);
+  font-family: "Trebuchet MS", Arial, sans-serif;
 }
 
 /* ---------- Titles ---------- */
@@ -21,7 +24,12 @@ body {
   color: var(--color-dark);
   font-weight: 700;
   font-size: 1.75rem;
+  margin-bottom: 0;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+
 }
+
+
 
 /* ---------- Buttons (same shape and font on every page) ---------- */
 .btn-site-primary,
@@ -34,12 +42,24 @@ body {
 .btn-site-primary {
   background-color: var(--color-primary);
   color: #ffffff;
+  display: inline-flex;
+  border: none;
+  align-items: center;
+  border-radius: 18px;
+  padding: 7px 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
 }
+
 
 .btn-site-primary:hover {
   background-color: var(--color-primary-dark);
   color: #ffffff;
+  transform: scale(1.05);
 }
+
 
 .btn-site-secondary {
   background-color: var(--color-secondary);
@@ -50,6 +70,8 @@ body {
   background-color: var(--color-secondary-dark);
   color: var(--color-dark);
 }
+
+
 
 /* ---------- Navigation bar ---------- */
 .site-navbar {
@@ -99,6 +121,7 @@ body {
   height: 350px;
   object-fit: cover;
 }
+
 
 /* Dark background behind the caption so the text is readable */
 .category-carousel .carousel-caption {
@@ -163,3 +186,5 @@ body {
   background-color: var(--color-dark);
   color: #ffffff;
 }
+
+

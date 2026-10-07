@@ -19,6 +19,9 @@
     <!-- Project styles -->
     <link href="resources/PokeURJC.css" rel="stylesheet" />
   </head>
+
+  <!--Navigation bar with bootstrap-->
+
   <body class="d-flex flex-column min-vh-100">
     <!-- Navigation bar -->
     <nav class="navbar navbar-expand-lg navbar-dark site-navbar">
@@ -48,18 +51,6 @@
             <li class="nav-item"><a class="nav-link" href="#">Ropa</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Accesorios</a></li>
           </ul>
-          <!-- Search form (functionality in Práctica 2) -->
-          <form class="d-flex" role="search">
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Buscar producto"
-              aria-label="Buscar producto"
-            />
-            <button class="btn btn-site-secondary" type="submit">
-              <i class="bi bi-search"></i>
-            </button>
-          </form>
         </div>
       </div>
     </nav>
@@ -72,167 +63,110 @@
       </div>
     </header>
 
-    <!-- ===== Featured products carousel: one category per slide ===== -->
-    <section class="container mt-5">
-      <h2 class="section-title mb-4">Destacados</h2>
-      <div id="productCarousel" class="carousel slide product-carousel" data-bs-ride="carousel" data-bs-interval="4000">
-        <div class="carousel-inner">
-          <!-- Slide: cards -->
-          <div class="carousel-item active">
-            <h3 class="category-title">Cartas</h3>
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
-              <!-- Visible on all screens (items 1-3) -->
-              <div class="col">
-                <a class="card product-card h-100" href="detail.html">
-                  <img class="card-img-top product-image" src="images/products/stage2-charizard-card.jpg" alt="Carta Charizard" />
-                  <div class="card-body text-center"><h4 class="product-name">Carta Charizard</h4><p class="product-price mb-0">89,99 €</p></div>
-                </a>
-              </div>
-              <div class="col">
-                <a class="card product-card h-100" href="detail.html">
-                  <img class="card-img-top product-image" src="images/products/basic-pikachu-card.jpg" alt="Carta Pikachu" />
-                  <div class="card-body text-center"><h4 class="product-name">Carta Pikachu</h4><p class="product-price mb-0">24,99 €</p></div>
-                </a>
-              </div>
-              <div class="col">
-                <a class="card product-card h-100" href="detail.html">
-                  <img class="card-img-top product-image" src="images/products/stage2-solgaleo-card.jpg" alt="Carta Solgaleo" />
-                  <div class="card-body text-center"><h4 class="product-name">Carta Solgaleo</h4><p class="product-price mb-0">34,50 €</p></div>
-                </a>
-              </div>
 
-              <!-- Visible from tablet up (items 4-6) -->
-              <div class="col d-none d-sm-block">
-                <a class="card product-card h-100" href="detail.html">
-                  <img class="card-img-top product-image" src="images/products/basic-dialga-card.jpg" alt="Carta Dialga" />
-                  <div class="card-body text-center"><h4 class="product-name">Carta Dialga</h4><p class="product-price mb-0">29,99 €</p></div>
-                </a>
-              </div>
-              <div class="col d-none d-sm-block">
-                <a class="card product-card h-100" href="detail.html">
-                  <img class="card-img-top product-image" src="images/products/basic-palkia-card.jpg" alt="Carta Palkia" />
-                  <div class="card-body text-center"><h4 class="product-name">Carta Palkia</h4><p class="product-price mb-0">29,99 €</p></div>
-                </a>
-              </div>
-              <div class="col d-none d-sm-block">
-                <a class="card product-card h-100" href="detail.html">
-                  <img class="card-img-top product-image" src="images/products/basic-groudon-card.jpg" alt="Carta Groudon" />
-                  <div class="card-body text-center"><h4 class="product-name">Carta Groudon</h4><p class="product-price mb-0">19,95 €</p></div>
-                </a>
-              </div>
-
-              <!-- Visible only on desktop (items 7-9) -->
-              <div class="col d-none d-lg-block">
-                <a class="card product-card h-100" href="detail.html">
-                  <img class="card-img-top product-image" src="images/products/basic-zacian-card.jpg" alt="Carta Zacian" />
-                  <div class="card-body text-center"><h4 class="product-name">Carta Zacian</h4><p class="product-price mb-0">22,50 €</p></div>
-                </a>
-              </div>
-              <div class="col d-none d-lg-block">
-                <a class="card product-card h-100" href="detail.html">
-                  <img class="card-img-top product-image" src="images/products/basic-xerneas-card.jpg" alt="Carta Xerneas" />
-                  <div class="card-body text-center"><h4 class="product-name">Carta Xerneas</h4><p class="product-price mb-0">17,99 €</p></div>
-                </a>
-              </div>
-              <div class="col d-none d-lg-block">
-                <a class="card product-card h-100" href="detail.html">
-                  <img class="card-img-top product-image" src="images/products/basic-raikou-card.jpg" alt="Carta Raikou" />
-                  <div class="card-body text-center"><h4 class="product-name">Carta Raikou</h4><p class="product-price mb-0">14,99 €</p></div>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Slide: plushies -->
-          <div class="carousel-item">
-            <h3 class="category-title">Peluches</h3>
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
-              <div class="col">
-                <a class="card product-card h-100" href="detail.html">
-                  <img class="card-img-top product-image" src="images/products/pikachu-plush.jpg" alt="Peluche de Pikachu" />
-                  <div class="card-body text-center">
-                    <h4 class="product-name">Peluche de Pikachu</h4>
-                    <p class="product-price mb-0">19,99 €</p>
-                  </div>
-                </a>
-              </div>
-              <div class="col d-none d-sm-block">
-                <a class="card product-card h-100" href="detail.html">
-                  <img class="card-img-top product-image" src="images/products/snorlax-plush.jpg" alt="Peluche de Snorlax" />
-                  <div class="card-body text-center">
-                    <h4 class="product-name">Peluche de Snorlax</h4>
-                    <p class="product-price mb-0">39,99 €</p>
-                  </div>
-                </a>
-              </div>
-              <div class="col d-none d-lg-block">
-                <a class="card product-card h-100" href="detail.html">
-                  <img class="card-img-top product-image" src="images/products/eevee-plush.jpg" alt="Peluche de Eevee" />
-                  <div class="card-body text-center">
-                    <h4 class="product-name">Peluche de Eevee</h4>
-                    <p class="product-price mb-0">22,99 €</p>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Slide: figures -->
-          <div class="carousel-item">
-            <h3 class="category-title">Figuras</h3>
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
-              <div class="col">
-                <a class="card product-card h-100" href="detail.html">
-                  <img class="card-img-top product-image" src="images/products/gengar-figure.jpg" alt="Figura de Gengar" />
-                  <div class="card-body text-center">
-                    <h4 class="product-name">Figura de Gengar</h4>
-                    <p class="product-price mb-0">29,95 €</p>
-                  </div>
-                </a>
-              </div>
-              <div class="col d-none d-sm-block">
-                <a class="card product-card h-100" href="detail.html">
-                  <img class="card-img-top product-image" src="images/products/lucario-figure.jpg" alt="Figura de Lucario" />
-                  <div class="card-body text-center">
-                    <h4 class="product-name">Figura de Lucario</h4>
-                    <p class="product-price mb-0">34,95 €</p>
-                  </div>
-                </a>
-              </div>
-              <div class="col d-none d-lg-block">
-                <a class="card product-card h-100" href="detail.html">
-                  <img class="card-img-top product-image" src="images/products/mew-figure.jpg" alt="Figura de Mew" />
-                  <div class="card-body text-center">
-                    <h4 class="product-name">Figura de Mew</h4>
-                    <p class="product-price mb-0">27,50 €</p>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Previous / next controls -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Anterior</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Siguiente</span>
-        </button>
-
-        <!-- Slide indicators -->
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Cartas"></button>
-          <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="1" aria-label="Peluches"></button>
-          <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="2" aria-label="Figuras"></button>
-        </div>
+    <main class="container py-4">
+      <div class="d-flex justify-content-end mb-4">
+        <a class="btn-site-primary" href="new-product.html">+ Crear nuevo elemento</a>
       </div>
-  </section>
 
-    <!-- Footer -->
-    <footer class="site-footer py-4">
+      <!-- All products displayed together in a responsive grid -->
+      <section>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+          <div class="col">
+            <a class="card product-card h-100" href="detail.html">
+              <img class="card-img-top product-image" src="images/products/stage2-charizard-card.jpg" alt="Carta Charizard" />
+              <div class="card-body text-center"><h4 class="product-name">Carta Charizard</h4><p class="product-price mb-0">89,99 €</p></div>
+            </a>
+          </div>
+          <div class="col">
+            <a class="card product-card h-100" href="detail.html">
+              <img class="card-img-top product-image" src="images/products/basic-pikachu-card.jpg" alt="Carta Pikachu" />
+              <div class="card-body text-center"><h4 class="product-name">Carta Pikachu</h4><p class="product-price mb-0">24,99 €</p></div>
+            </a>
+          </div>
+          <div class="col">
+            <a class="card product-card h-100" href="detail.html">
+              <img class="card-img-top product-image" src="images/products/stage2-solgaleo-card.jpg" alt="Carta Solgaleo" />
+              <div class="card-body text-center"><h4 class="product-name">Carta Solgaleo</h4><p class="product-price mb-0">34,50 €</p></div>
+            </a>
+          </div>
+          <div class="col">
+            <a class="card product-card h-100" href="detail.html">
+              <img class="card-img-top product-image" src="images/products/basic-dialga-card.jpg" alt="Carta Dialga" />
+              <div class="card-body text-center"><h4 class="product-name">Carta Dialga</h4><p class="product-price mb-0">29,99 €</p></div>
+            </a>
+          </div>
+          <div class="col">
+            <a class="card product-card h-100" href="detail.html">
+              <img class="card-img-top product-image" src="images/products/basic-palkia-card.jpg" alt="Carta Palkia" />
+              <div class="card-body text-center"><h4 class="product-name">Carta Palkia</h4><p class="product-price mb-0">29,99 €</p></div>
+            </a>
+          </div>
+          <div class="col">
+            <a class="card product-card h-100" href="detail.html">
+              <img class="card-img-top product-image" src="images/products/basic-groudon-card.jpg" alt="Carta Groudon" />
+              <div class="card-body text-center"><h4 class="product-name">Carta Groudon</h4><p class="product-price mb-0">19,95 €</p></div>
+            </a>
+          </div>
+          <div class="col">
+            <a class="card product-card h-100" href="detail.html">
+              <img class="card-img-top product-image" src="images/products/basic-zacian-card.jpg" alt="Carta Zacian" />
+              <div class="card-body text-center"><h4 class="product-name">Carta Zacian</h4><p class="product-price mb-0">22,50 €</p></div>
+            </a>
+          </div>
+          <div class="col">
+            <a class="card product-card h-100" href="detail.html">
+              <img class="card-img-top product-image" src="images/products/basic-xerneas-card.jpg" alt="Carta Xerneas" />
+              <div class="card-body text-center"><h4 class="product-name">Carta Xerneas</h4><p class="product-price mb-0">17,99 €</p></div>
+            </a>
+          </div>
+          <div class="col">
+            <a class="card product-card h-100" href="detail.html">
+              <img class="card-img-top product-image" src="images/products/basic-raikou-card.jpg" alt="Carta Raikou" />
+              <div class="card-body text-center"><h4 class="product-name">Carta Raikou</h4><p class="product-price mb-0">14,99 €</p></div>
+            </a>
+          </div>
+          <div class="col">
+            <a class="card product-card h-100" href="detail.html">
+              <img class="card-img-top product-image" src="images/products/pikachu-plush.jpg" alt="Peluche de Pikachu" />
+              <div class="card-body text-center"><h4 class="product-name">Peluche de Pikachu</h4><p class="product-price mb-0">19,99 €</p></div>
+            </a>
+          </div>
+          <div class="col">
+            <a class="card product-card h-100" href="detail.html">
+              <img class="card-img-top product-image" src="images/products/snorlax-plush.jpg" alt="Peluche de Snorlax" />
+              <div class="card-body text-center"><h4 class="product-name">Peluche de Snorlax</h4><p class="product-price mb-0">39,99 €</p></div>
+            </a>
+          </div>
+          <div class="col">
+            <a class="card product-card h-100" href="detail.html">
+              <img class="card-img-top product-image" src="images/products/eevee-plush.jpg" alt="Peluche de Eevee" />
+              <div class="card-body text-center"><h4 class="product-name">Peluche de Eevee</h4><p class="product-price mb-0">22,99 €</p></div>
+            </a>
+          </div>
+          <div class="col">
+            <a class="card product-card h-100" href="detail.html">
+              <img class="card-img-top product-image" src="images/products/gengar-figure.jpg" alt="Figura de Gengar" />
+              <div class="card-body text-center"><h4 class="product-name">Figura de Gengar</h4><p class="product-price mb-0">29,95 €</p></div>
+            </a>
+          </div>
+          <div class="col">
+            <a class="card product-card h-100" href="detail.html">
+              <img class="card-img-top product-image" src="images/products/lucario-figure.jpg" alt="Figura de Lucario" />
+              <div class="card-body text-center"><h4 class="product-name">Figura de Lucario</h4><p class="product-price mb-0">34,95 €</p></div>
+            </a>
+          </div>
+          <div class="col">
+            <a class="card product-card h-100" href="detail.html">
+              <img class="card-img-top product-image" src="images/products/mew-figure.jpg" alt="Figura de Mew" />
+              <div class="card-body text-center"><h4 class="product-name">Figura de Mew</h4><p class="product-price mb-0">27,50 €</p></div>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer py-4 mt-auto">
       <div class="container text-center">
         <p class="mb-1 fw-bold">PokeURJC</p>
         <p class="mb-0 small">
@@ -241,7 +175,6 @@
       </div>
     </footer>
 
-    <!-- Bootstrap JS (needed for the collapsible navbar on mobile) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
