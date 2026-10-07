@@ -1,12 +1,12 @@
 
 /* ---------- Color palette ---------- */
 :root {
-  --color-primary: #e3350d; /* Poké Ball red */
-  --color-primary-dark: #b52a0a;
-  --color-secondary: #ffcb05; /* Pikachu yellow */
-  --color-secondary-dark: #e0b000;
-  --color-dark: #1d2c5e; /* Pokémon logo blue */
-  --color-light: #f6f7fb;
+  --color-primary: #2a4b8d; /* Main blue: buttons and prices */
+  --color-primary-dark: #1f3a6e;
+  --color-secondary: #f2c94c; /* Soft gold: accents */
+  --color-secondary-dark: #d9b23a;
+  --color-dark: #14213d; /* Navy: navbar, hero and footer */
+  --color-light: #f5f6fa;
   --color-text: #222222;
   --radius: 0.75rem;
 }
@@ -53,7 +53,7 @@ body {
 
 /* ---------- Navigation bar ---------- */
 .site-navbar {
-  background-color: var(--color-primary);
+  background-color: var(--color-dark);
 }
 
 .site-navbar .nav-link {
@@ -73,7 +73,7 @@ body {
 .site-hero {
   /* Dark overlay on top of the image so the text stays readable */
   background-image:
-    linear-gradient(rgba(29, 44, 94, 0.75), rgba(29, 44, 94, 0.75)),
+    linear-gradient(rgba(20, 33, 61, 0.8), rgba(20, 33, 61, 0.8)),
     url("../images/hero-banner.jpeg");
   background-size: cover;
   background-position: center;
