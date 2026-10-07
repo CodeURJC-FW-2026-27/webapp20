@@ -1,5 +1,5 @@
 #!/bin/sh
-# Reminder shown before every push
+# Recordatorio que se muestra antes de cada envío (push)
 echo ""
 echo "=================================================="
 echo " RECUERDA: avisa al equipo de lo que has cambiado."
