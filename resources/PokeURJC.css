@@ -24,22 +24,22 @@ body {
 /* ---------- Buttons (same shape and font on every page) ---------- */
 .btn-site-primary,
 .btn-site-secondary {
-  border-radius: var(--radius);
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 14px;
+  border-radius: 18px;
   font-weight: 600;
-  border: none;
+  text-decoration: none;
+  cursor: pointer;
 }
+
 
 .btn-site-primary {
   background-color: var(--color-primary);
   color: #ffffff;
-  display: inline-flex;
-  align-items: center;
-  padding: 7px 14px;
-  text-decoration: none;
-  cursor: pointer;
+  border: none;
   transition: transform 0.2s ease, background-color 0.2s ease;
 }
-
 
 .btn-site-primary:hover {
   background-color: var(--color-primary-dark);
@@ -47,10 +47,10 @@ body {
   transform: scale(1.05);
 }
 
-
 .btn-site-secondary {
   background-color: var(--color-secondary);
   color: var(--color-dark);
+  border: none;
 }
 
 .btn-site-secondary:hover {
@@ -144,3 +144,26 @@ body {
 }
 
 
+/* ---------- Add product page ---------- */
+
+.add-product-title {
+  color: var(--color-dark);
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.add-product-image {
+  min-height: 400px;
+  background-color: #ffffff;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.add-product-image img {
+  max-width: 80%;
+  max-height: 350px;
+  object-fit: contain;
+}
