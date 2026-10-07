@@ -19,16 +19,6 @@ body {
   font-family: "Trebuchet MS", Arial, sans-serif;
 }
 
-/* ---------- Titles ---------- */
-.section-title {
-  color: var(--color-dark);
-  font-weight: 700;
-  font-size: 1.75rem;
-  margin-bottom: 0;
-  font-family: "Trebuchet MS", Arial, sans-serif;
-
-}
-
 
 
 /* ---------- Buttons (same shape and font on every page) ---------- */
@@ -43,11 +33,8 @@ body {
   background-color: var(--color-primary);
   color: #ffffff;
   display: inline-flex;
-  border: none;
   align-items: center;
-  border-radius: 18px;
   padding: 7px 14px;
-  font-weight: 600;
   text-decoration: none;
   cursor: pointer;
   transition: transform 0.2s ease, background-color 0.2s ease;
@@ -110,25 +97,6 @@ body {
 }
 
 
-/* ---------- Featured categories carousel ---------- */
-.category-carousel {
-  border-radius: var(--radius);
-  overflow: hidden;
-}
-
-/* Same height for every slide; images keep their proportions */
-.category-carousel .carousel-item img {
-  height: 350px;
-  object-fit: cover;
-}
-
-
-/* Dark background behind the caption so the text is readable */
-.category-carousel .carousel-caption {
-  background-color: rgba(20, 33, 61, 0.7);
-  border-radius: var(--radius);
-  padding: 1rem;
-}
 
 /* ---------- Product cards (main page grid) ---------- */
 .product-card {
@@ -148,18 +116,6 @@ body {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* Indicators below the cards, with their own space */
-.product-carousel .carousel-indicators {
-  position: static;
-  margin: 2rem 0 0;
-}
-
-.product-carousel .carousel-indicators [data-bs-target] {
-  background-color: var(--color-dark);
-  width: 40px;
-  height: 5px;
-  border-radius: 3px;
-}
 
 /* Same size for every image, so the grid stays aligned */
 .product-image {
