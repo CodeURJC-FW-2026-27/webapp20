@@ -1,0 +1,9 @@
+#!/bin/sh
+# Reminder shown before every push
+echo ""
+echo "=================================================="
+echo " RECUERDA: avisa al equipo de lo que has cambiado."
+echo " Vas a mover, renombrar o borrar ficheros? Pregunta antes."
+echo "=================================================="
+echo ""
+exit 0
