@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="PokeURJC - Detalle de producto" />
+    <title>Detalle de producto - PokeURJC</title>
+
+    <link rel="icon" type="image/png" href="images/PokeURJC.png" />
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+    <!-- Project styles -->
+    <link href="resources/PokeURJC.css" rel="stylesheet" />
+  </head>
+
+  <body class="d-flex flex-column min-vh-100">
+    <!-- Navigation bar (same as index.html) -->
+    <nav class="navbar navbar-expand-lg navbar-dark site-navbar">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center fw-bold" href="index.html">
+          <img class="site-logo me-2" src="images/PokeURJC.png" alt="Logo de PokeURJC" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNavbar"
+          aria-controls="mainNavbar"
+          aria-expanded="false"
+          aria-label="Abrir menú"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Cartas</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Peluches</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Figuras</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Ropa</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Accesorios</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <main class="container py-5">
+      <!-- Product detail -->
+      <section class="row g-4 mb-5">
+        <!-- Product image -->
+        <div class="col-12 col-lg-5">
+          <div class="image-panel">
+            <img
+              src="images/products/Gallade_Plushie.webp"
+              class="detail-image"
+              alt="Peluche de Gallade"
+            />
+          </div>
+        </div>
+
+        <!-- Product information -->
+        <div class="col-12 col-lg-7">
+          <h1 class="page-title mb-3">Gallade Plushie</h1>
+
+          <dl class="detail-attributes mb-3">
+            <dt>Categoría</dt>
+            <dd>Peluches</dd>
+            <dt>Pokémon</dt>
+            <dd>Gallade</dd>
+            <dt>Precio</dt>
+            <dd class="product-price">15,99 €</dd>
+          </dl>
+
+          <h2 class="section-title">Descripción</h2>
+          <p class="mb-4">
+            Peluche oficial de Gallade, suave y de gran calidad. Ideal para coleccionistas y
+            fans de la región de Sinnoh.
+          </p>
+
+          <!-- Main entity actions -->
+          <div class="d-flex flex-wrap justify-content-end gap-2">
+            <a href="index.html" class="btn btn-site-secondary">
+              <i class="bi bi-arrow-left me-1"></i> Volver a página principal
+            </a>
+            <button type="button" class="btn btn-site-primary">
+              <i class="bi bi-pencil me-1"></i> Editar
+            </button>
+            <button type="button" class="btn btn-site-danger">
+              <i class="bi bi-trash me-1"></i> Borrar
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Reviews (secondary entity) -->
+      <section class="row g-4">
+        <!-- Review list -->
+        <div class="col-12 col-lg-7">
+          <h2 class="page-title mb-4">Reseñas</h2>
+
+          <article class="review-card mb-3">
+            <div class="d-flex justify-content-between flex-wrap gap-1">
+              <h3 class="review-author">Ash Ketchum</h3>
+              <span class="review-date">13/10/2025</span>
+            </div>
+            <p class="review-rating mb-2" aria-label="4 de 5 estrellas">
+              <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
+              ><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
+              ><i class="bi bi-star"></i>
+            </p>
+            <p class="review-text">
+              Muy suave y bien acabado. Se nota que es un producto oficial.
+            </p>
+            <div class="d-flex justify-content-end gap-2">
+              <button type="button" class="btn btn-site-primary">Editar</button>
+              <button type="button" class="btn btn-site-danger">Borrar</button>
+            </div>
+          </article>
+
+          <article class="review-card mb-3">
+            <div class="d-flex justify-content-between flex-wrap gap-1">
+              <h3 class="review-author">Misty Williams</h3>
+              <span class="review-date">12/10/2025</span>
+            </div>
+            <p class="review-rating mb-2" aria-label="5 de 5 estrellas">
+              <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
+              ><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i
+              ><i class="bi bi-star-fill"></i>
+            </p>
+            <p class="review-text">
+              Llegó rápido y en perfecto estado. Repetiría sin dudarlo.
+            </p>
+            <div class="d-flex justify-content-end gap-2">
+              <button type="button" class="btn btn-site-primary">Editar</button>
+              <button type="button" class="btn btn-site-danger">Borrar</button>
+            </div>
+          </article>
+        </div>
+
+        <!-- New review form -->
+        <div class="col-12 col-lg-5">
+          <h2 class="page-title mb-4">Añadir reseña</h2>
+          <form class="review-form">
+            <div class="mb-3">
+              <label for="reviewAuthor" class="form-label">Autor</label>
+              <input
+                type="text"
+                class="form-control"
+                id="reviewAuthor"
+                name="author"
+                placeholder="Ej. Ash Ketchum"
+                required
+                maxlength="50"
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="reviewDate" class="form-label">Fecha</label>
+              <input type="date" class="form-control" id="reviewDate" name="date" required />
+            </div>
+
+            <div class="mb-3">
+              <label for="reviewRating" class="form-label">Puntuación</label>
+              <select class="form-select" id="reviewRating" name="rating" required>
+                <option value="" selected disabled>Selecciona una puntuación</option>
+                <option value="5">5 estrellas</option>
+                <option value="4">4 estrellas</option>
+                <option value="3">3 estrellas</option>
+                <option value="2">2 estrellas</option>
+                <option value="1">1 estrella</option>
+              </select>
+            </div>
+
+            <div class="mb-4">
+              <label for="reviewText" class="form-label">Reseña</label>
+              <textarea
+                class="form-control"
+                id="reviewText"
+                name="text"
+                rows="4"
+                placeholder="Escribe tu opinión sobre el producto"
+                required
+                minlength="10"
+                maxlength="300"
+              ></textarea>
+            </div>
+
+            <div class="d-flex justify-content-end">
+              <button type="submit" class="btn btn-site-primary">Crear</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer (same as the other pages) -->
+    <footer class="site-footer py-4 mt-auto">
+      <div class="container text-center">
+        <p class="mb-1 fw-bold">PokeURJC</p>
+        <p class="mb-0 small">Proyecto de Fundamentos de la Web · URJC 2026–27 · webapp20</p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
