@@ -1,3 +1,5 @@
+
+
 # PokeURJC
 ### webapp20
 
@@ -12,13 +14,13 @@
 | Sergio Alejandro Romero    | sa.romero.2024@alumnos.urjc.es    | sergioromero2k   |
 | Alvaro Martin Jurado  |  a.martinju.2026@alumnos.urjc.es | AlvaritoMartin87  |
 
----
 
-## Coordination Tools
+--------------------------------------------------------------------------
+## Cordination Tools:
 
 None in use for now.
 
----
+--------------------------------------------------------------------------
 
 ## Project Description
 **PokeURJC** is a web application focused on **browsing and selling Pokémon products.**
@@ -46,14 +48,99 @@ Each product will contain the following information:
 - Rating
 - Date
 
-> Only the main/primary entity will be able to have uploaded images.
-
 ### Images
 Only the main entity (**Pokémon Product**) will have an associated image.
 
-### Search, Filtering and Categorization
-* **Search**: users can search products by **name**.
-* **Categorization**: products are grouped by **product type** (``Cards``, ``Plushies``, ``Figures``, ``Clothing``, ``Accessories``), shown as buttons in the menu to browse each category.
+
+
+## Project - Part 1
+
+### Screenshots
+- **Home Page**
+
+
+- **Product Detail Page**
+
+
+- **Add new product page**  
+
+### Members' participation 
+
+#### Rim Afoud
+**Tasks:**
+
+
+
+**5 most significant commits:**  
+1. [Commit 1]
+2. [Commit 2]
+3. [Commit 3]
+4. [Commit 4]
+5. [Commit 5]
+
+**Files with most participation:**  
+
+
+---
+
+#### Ignacio Roncero Medina 
+**Tasks:**  
+
+
+  
+**5 most significant commits:**  
+1. [Commit 1]
+2. [Commit 2]
+3. [Commit 3]
+4. [Commit 4]
+5. [Commit 5]
+
+**Files with most participation:**  
+
+
+---
+
+#### Sergio Alejandro Romero 
+**Tasks:**  
+
+
+
+**5 most significant commits:**  
+1. [Commit 1]
+2. [Commit 2]
+3. [Commit 3]
+4. [Commit 4]
+5. [Commit 5]
+
+**Files with most participation:**  
+
+
+
+
+
+---
+
+#### Alvaro Martin Jurado
+**Tasks:**  
+
+
+
+**5 most significant commits:**  
+1. [Commit 1]
+2. [Commit 2]
+3. [Commit 3]
+4. [Commit 4]
+5. [Commit 5]
+
+**Files with most participation:**  
+
+
+
+
+
+
+
+
 
 ---
 
@@ -98,3 +185,8 @@ Make **one commit per change**, not one huge commit at the end of the day.
 * **Code, comments and file names** are written in English. Only texts shown to the user are in Spanish.
 * **File names** use lowercase and hyphens, without spaces or accents (e.g. ``charizard-ex-card.jpg``).
 * **Formatting** is done automatically with Prettier (*Format On Save*).
+
+
+
+
+
