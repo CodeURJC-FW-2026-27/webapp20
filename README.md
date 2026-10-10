@@ -84,18 +84,19 @@ Only the main entity (**Pokémon Product**) will have an associated image.
 
 #### Ignacio Roncero Medina 
 **Tasks:**  
-
+Added search bar and changed the products of the main page, also assisted in the developtment of the main page.
 
   
 **5 most significant commits:**  
-1. [Commit 1]
-2. [Commit 2]
+1. [Cambio de productos](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/eb34001818561906a60cf1176e3c618358c1b96e)
+2. [Search bar, atribute changes](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/6c14ed3f54b7eb6aca4b6b1b075729ad9575926a)
 3. [Commit 3]
 4. [Commit 4]
 5. [Commit 5]
 
 **Files with most participation:**  
-
+index.html
+detail.html
 
 ---
 
