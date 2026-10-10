@@ -38,7 +38,6 @@ Each product will contain the following information:
 - Name
 - Price
 - Description
-- Pokémon
 - Product Type
 - Image
 
