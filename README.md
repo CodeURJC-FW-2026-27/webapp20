@@ -116,22 +116,33 @@ Only the main entity (**Pokémon Product**) will have an associated image.
 
 ---
 
-#### Sergio Alejandro Romero 
-**Tasks:**  
+#### **Sergio Alejandro Romero**
 
+**Tasks:**
+- Set up the base of the repository: `.gitignore`, functionality section of the README and Git workflow guide.
+- Organized the team backlog in GitHub Projects (issues, labels and assignments).
+- Adapted the Bootstrap *Shop Homepage* template to PokeURJC.
+- Built the main page: navigation bar with logo, categories and search box, and hero section with background image.
+- Added the featured products carousel by category and the "Crear nuevo elemento" button.
+- Created the shared header and footer for all pages.
+- Created the base stylesheet: color palette, buttons and titles reused across the site.
+- Added a pre-push hook to remind the team to communicate their changes.
 
+**5 most significant commits:**
 
-**5 most significant commits:**  
-1. [Commit 1]
-2. [Commit 2]
-3. [Commit 3]
-4. [Commit 4]
-5. [Commit 5]
+1. [feat(grid): add main page with navbar, product grid and footer](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/c538623)
+2. [feat(grid): add featured products carousel and logo to main page](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/cbeb464)
+3. [feat(css): add base styles and color palette](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/962194b)
+4. [feat(header): add shared header and footer to new product page](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/6fec6cb)
+5. [docs(readme): update functionality and add Practica 1 section](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/269f787)
 
-**Files with most participation:**  
+**5 files with most participation:**
 
-
-
+1. [index.html](https://github.com/CodeURJC-FW-2026-27/webapp20/blob/main/index.html)
+2. [resources/PokeURJC.css](https://github.com/CodeURJC-FW-2026-27/webapp20/blob/main/resources/PokeURJC.css)
+3. [README.md](https://github.com/CodeURJC-FW-2026-27/webapp20/blob/main/README.md)
+4. [new-product.html](https://github.com/CodeURJC-FW-2026-27/webapp20/blob/main/new-product.html)
+5. [.githooks/pre-push](https://github.com/CodeURJC-FW-2026-27/webapp20/blob/main/.githooks/pre-push)
 
 ---
 
