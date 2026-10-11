@@ -73,7 +73,6 @@ Only the main entity (**Pokémon Product**) will have an associated image.
 
 <img width="1901" alt="Add New Product Page" src="./images/new-productpage.png" />
 
-### Members' participation
 
 ### Members' participation 
 
