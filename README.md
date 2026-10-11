@@ -22,35 +22,48 @@ None in use for now.
 
 --------------------------------------------------------------------------
 
-## Project Description
-**PokeURJC** is a web application focused on **browsing and selling Pokémon products.**
+## **Project Description**
 
-The application allows users to **explore a collection of Pokémon related products** and access detailed information about each product, such as its **name, price, description, Pokémon and product type.**
-Users can also **add new Pokémon products** to the application. Each product can have an associated **image** and **reviews from users.**
-The main objective of **PokeURJC** is to provide a **simple and intuitive platform** where users can **discover, view and sell Pokémon products.**
+**PokeURJC** is a web application focused on **browsing and selling Pokémon products**.
 
-## Functionality
+The application allows users to **explore a collection of Pokémon related products** (cards, plushies, figures, clothing and accessories) and access detailed information about each product, such as its **name, description, category and price**.
 
-### Main Entity: Pokémon Product
+Users can also **add new Pokémon products** to the application. Each product has an associated **image** and can receive **reviews from users**.
 
-Each product will contain the following information:
+The main objective of **PokeURJC** is to provide a **simple and intuitive platform** where users can **discover, view and sell Pokémon products**.
 
-- Name
-- Price
-- Description
-- Product Type
-- Image
+---
 
-### Secondary Entity: Review
+## **Functionality**
 
-- Author
-- Rating
-- Date
+### **Main Entity: Pokémon Product**
 
-### Images
-Only the main entity (**Pokémon Product**) will have an associated image.
+| Attribute | Type | Description |
+|-----------|------|-------------|
+| Name | Text | Name of the product |
+| Description | Long text | Short description of the product |
+| Category | Selection | Cards, Plushies, Figures, Clothing or Accessories |
+| Price | Number | Price in euros |
+| Image | Image | Picture of the product, uploaded from the browser |
 
+### **Secondary Entity: Review**
 
+| Attribute | Type | Description |
+|-----------|------|-------------|
+| Author | Text | Name of the user who writes the review (max. 50 characters) |
+| Date | Date | Date of the review |
+| Rating | Number | Score from 1 to 5 stars |
+| Text | Long text | Opinion about the product (10 to 300 characters) |
+
+Each product can have several reviews. A review always belongs to one product.
+
+### **Images**
+Only the main entity (**Pokémon Product**) has an associated image.
+
+### **Search, Filtering and Categorization**
+
+- **Search:** a search box in the navigation bar returns the products whose **name** contains the text entered.
+- **Categorization:** products are grouped by **category** (Cards, Plushies, Figures, Clothing and Accessories). Each category is available in the navigation bar to show only the products of that category.
 
 ## Project - Part 1
 
