@@ -1,5 +1,4 @@
 
-
 # PokeURJC
 ### webapp20
 
@@ -78,11 +77,12 @@ Only the main entity (**Pokémon Product**) will have an associated image.
 
 #### Rim Afoud
 **Tasks:**
-- Fixed the layout and grid structure of the main page.
-- Developed the page for adding new Pokémon products.
-- Made some CSS adjustments to improve button styling.
+- Improved the layout and grid structure of the main page.
+- Developed the new Pokémon product creation page.
+- Refined the CSS styling of buttons and titles.
 
 **5 most significant commits:**  
+
 1. [Grid layout changes in home page](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/7025612e1018deb83c0fccf53935b0eb42127918)
 2. [CSS button styling](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/499035fe58c3a605e48e517c1db585494398097d)
 3. [New product page](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/fc1f7a041c0139fc623dfe40678c048108504901)
@@ -90,10 +90,11 @@ Only the main entity (**Pokémon Product**) will have an associated image.
 5. [Title styling](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/fc0abffc8b1d596c5a3f75aeb9274c90ca7350b0)
 
 **Files with most participation:**  
-- `new-product.html`
-- `PokeURJC.css`
-- `index.html`
 
+- [new-product.html](https://github.com/CodeURJC-FW-2026-27/webapp20/blob/main/new-product.html)
+- [resources/PokeURJC.css](https://github.com/CodeURJC-FW-2026-27/webapp20/blob/main/resources/PokeURJC.css)
+- [index.html](https://github.com/CodeURJC-FW-2026-27/webapp20/blob/main/index.html)
+- [README.md](https://github.com/CodeURJC-FW-2026-27/webapp20/blob/main/README.md)
   
 ---
 
@@ -104,6 +105,7 @@ Only the main entity (**Pokémon Product**) will have an associated image.
 
   
 **5 most significant commits:**  
+
 1. [Changes in products](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/eb34001818561906a60cf1176e3c618358c1b96e)
 2. [Search bar, atribute changes](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/6c14ed3f54b7eb6aca4b6b1b075729ad9575926a)
 3. [Commit 3]
@@ -111,8 +113,9 @@ Only the main entity (**Pokémon Product**) will have an associated image.
 5. [Commit 5]
 
 **Files with most participation:**  
-- `index.html`
-- `detail.html`
+
+- [index.html](https://github.com/CodeURJC-FW-2026-27/webapp20/blob/main/index.html)
+- [detail.html](https://github.com/CodeURJC-FW-2026-27/webapp20/blob/main/detail.html)
 
 ---
 
@@ -136,34 +139,36 @@ Only the main entity (**Pokémon Product**) will have an associated image.
 4. [feat(header): add shared header and footer to new product page](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/6fec6cb)
 5. [docs(readme): update functionality and add Practica 1 section](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/269f787)
 
-**5 files with most participation:**
+**Files with most participation:**
 
-1. [index.html](https://github.com/CodeURJC-FW-2026-27/webapp20/blob/main/index.html)
-2. [resources/PokeURJC.css](https://github.com/CodeURJC-FW-2026-27/webapp20/blob/main/resources/PokeURJC.css)
-3. [README.md](https://github.com/CodeURJC-FW-2026-27/webapp20/blob/main/README.md)
-4. [new-product.html](https://github.com/CodeURJC-FW-2026-27/webapp20/blob/main/new-product.html)
-5. [.githooks/pre-push](https://github.com/CodeURJC-FW-2026-27/webapp20/blob/main/.githooks/pre-push)
+- [index.html](https://github.com/CodeURJC-FW-2026-27/webapp20/blob/main/index.html)
+- [resources/PokeURJC.css](https://github.com/CodeURJC-FW-2026-27/webapp20/blob/main/resources/PokeURJC.css)
+- [README.md](https://github.com/CodeURJC-FW-2026-27/webapp20/blob/main/README.md)
+- [new-product.html](https://github.com/CodeURJC-FW-2026-27/webapp20/blob/main/new-product.html)
+- [.githooks/pre-push](https://github.com/CodeURJC-FW-2026-27/webapp20/blob/main/.githooks/pre-push)
 
 ---
 
 #### Alvaro Martin Jurado
 **Tasks:**  
-Create the HTML for detail.html using Bootstrap.
-Adapt the CSS for detail.html.
-Help with the option from new-product.html
+- Create the HTML for detail.html using Bootstrap.
+- Adapt the CSS for detail.html.
+- Help with the option from new-product.html
 
 **5 most significant commits:**  
-1.[Create the HTML for detail.html using Bootstrap.](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/c84ae456c9720192b18dbb236875981c7e5da109)
-2.[Adapt Css for detail.html](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/7e9f705c745a5ae70d8bbc7f3220d2a9a09914c9)
-3.[Change the form](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/4d5d2a05d3027c8fa7df3786d06cc096bc17aec9)
-4.[Change required the elements](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/f8e42d705d48a3eae4127d9eca814f5063875e15)
-5.[Change all inputs for required](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/2282c8aee44d0ba1156b8404c70658e94418ebca)
+
+1. [Create the HTML for detail.html using Bootstrap.](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/c84ae456c9720192b18dbb236875981c7e5da109)
+2. [Adapt Css for detail.html](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/7e9f705c745a5ae70d8bbc7f3220d2a9a09914c9)
+3. [Change the form](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/4d5d2a05d3027c8fa7df3786d06cc096bc17aec9)
+4. [Change required the elements](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/f8e42d705d48a3eae4127d9eca814f5063875e15)
+5. [Change all inputs for required](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/2282c8aee44d0ba1156b8404c70658e94418ebca)
 
 **Files with most participation:**  
-[detail.html](https://github.com/CodeURJC-FW-2026-27/webapp20/blob/main/detail.html)
-[new-product.html](https://github.com/CodeURJC-FW-2026-27/webapp20/blob/main/new-product.html)
-[PokeURJC.css](https://github.com/CodeURJC-FW-2026-27/webapp20/blob/main/resources/PokeURJC.css)
-[Readme.md](https://github.com/CodeURJC-FW-2026-27/webapp20/blob/main/README.md)
+
+- [detail.html](https://github.com/CodeURJC-FW-2026-27/webapp20/blob/main/detail.html)
+- [new-product.html](https://github.com/CodeURJC-FW-2026-27/webapp20/blob/main/new-product.html)
+- [PokeURJC.css](https://github.com/CodeURJC-FW-2026-27/webapp20/blob/main/resources/PokeURJC.css)
+- [Readme.md](https://github.com/CodeURJC-FW-2026-27/webapp20/blob/main/README.md)
 
 
 
