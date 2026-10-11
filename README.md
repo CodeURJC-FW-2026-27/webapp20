@@ -67,36 +67,41 @@ Only the main entity (**Pokémon Product**) will have an associated image.
 
 #### Rim Afoud
 **Tasks:**
-
-
+- Fixed the layout and grid structure of the main page.
+- Developed the page for adding new Pokémon products.
+- Made some CSS adjustments to improve button styling.
 
 **5 most significant commits:**  
-1. [Commit 1]
-2. [Commit 2]
-3. [Commit 3]
-4. [Commit 4]
+1. [Grid layout changes in home page](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/7025612e1018deb83c0fccf53935b0eb42127918)
+2. [CSS button styling](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/499035fe58c3a605e48e517c1db585494398097d)
+3. [New product page](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/fc1f7a041c0139fc623dfe40678c048108504901)
+4. [Fixing logo in new product page](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/30870fb4037f6c32ecff78ee39bf0ae661bac004)
 5. [Commit 5]
 
 **Files with most participation:**  
+- `new-product.html`
+- `PokeURJC.css`
+- `index.html`
 
-
+  
 ---
 
 #### Ignacio Roncero Medina 
 **Tasks:**  
-Added search bar and changed the products of the main page, also assisted in the developtment of the main page.
+- Added search bar and changed the products of the main page
+- Assisted in the development of the main page.
 
   
 **5 most significant commits:**  
-1. [Cambio de productos](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/eb34001818561906a60cf1176e3c618358c1b96e)
+1. [Changes in products](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/eb34001818561906a60cf1176e3c618358c1b96e)
 2. [Search bar, atribute changes](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/6c14ed3f54b7eb6aca4b6b1b075729ad9575926a)
 3. [Commit 3]
 4. [Commit 4]
 5. [Commit 5]
 
 **Files with most participation:**  
-index.html
-detail.html
+- `index.html`
+- `detail.html`
 
 ---
 
@@ -113,7 +118,6 @@ detail.html
 5. [Commit 5]
 
 **Files with most participation:**  
-
 
 
 
@@ -138,53 +142,6 @@ detail.html
 
 
 
-
-
-
-
----
-
-## **How to Commit**
-
-### **Before your first commit (only once per computer)**
-
-Activate the team's pre-push reminder:
-```
-git config core.hooksPath .githooks
-```
-Before every push it will ask if you have told the team about your changes. Answer `S` to continue or `N` to cancel.
-
-### **Steps**
-
-1. Check which files you have changed:
-```
-   git status
-```
-2. Add the file you want to save:
-```
-   git add <file>
-```
-3. Commit with a message that explains the change:
-```
-   git commit -m "type(scope): description in English"
-```
-   Examples:
-   - `feat(detail): add reviews list` → something new
-   - `fix(grid): correct columns on mobile` → fix a bug
-   - `style(css): change button colors` → visual change
-   - `docs(readme): add screenshots` → documentation
-4. Push your commits:
-```
-   git push
-```
-
-Make **one commit per change**, not one huge commit at the end of the day.
-
-## Development Conventions
-* **Commits** follow the Conventional Commits specification, e.g. ``feat(header): add navbar with product categories.``
-* **Code, comments and file names** are written in English. Only texts shown to the user are in Spanish.
-* **File names** use lowercase and hyphens, without spaces or accents (e.g. ``charizard-ex-card.jpg``).
-* **Formatting** is done automatically with Prettier (*Format On Save*).
 
 
 
