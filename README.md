@@ -55,13 +55,17 @@ Only the main entity (**Pokémon Product**) will have an associated image.
 ## Project - Part 1
 
 ### Screenshots
+
 - **Home Page**
+<img width="1901" height="907" alt="image" src="" />
 
 
 - **Product Detail Page**
+<img width="1901" height="907" alt="image" src="" />
 
 
 - **Add new product page**  
+<img width="1901" height="907" alt="image" src="" />
 
 ### Members' participation 
 

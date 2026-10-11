@@ -24,13 +24,15 @@ body {
 /* ---------- Titles (same style on every page) ---------- */
 .page-title {
   color: var(--color-dark);
-  font-size: 1.8rem;
+  font-size: 4.2rem;
+  font-family: "Nabla", sans-serif;
   font-weight: 700;
 }
 
 .section-title {
   color: var(--color-dark);
-  font-size: 1.2rem;
+  font-size: 1.8rem;
+  font-family: "Bubblegum Sans", Arial, sans-serif;
   font-weight: 700;
 }
 
@@ -144,7 +146,9 @@ body {
 }
 
 .site-hero .lead {
-  color: var(--color-secondary);
+  color: var(--color-white);
+  font-family: "Bubblegum Sans", sans-serif;
+  font-size: 2.2rem;
 }
 
 /* ---------- Product cards (main page grid) ---------- */
