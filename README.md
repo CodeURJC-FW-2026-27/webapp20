@@ -56,16 +56,24 @@ Only the main entity (**Pokémon Product**) will have an associated image.
 
 ### Screenshots
 
-- **Home Page**
-<img width="1901" height="907" alt="image" src="" />
+**Home Page**
+
+<img width="1901" alt="Home Page" src="./images/homepage-1.png" />
+<img width="1901" alt="Home Page" src="./images/homepage-2.png" />
+<img width="1901" alt="Home Page" src="./images/homepage-3.png" />
 
 
-- **Product Detail Page**
-<img width="1901" height="907" alt="image" src="" />
+**Product Detail Page**
+
+<img width="1901" alt="Product Detail Page" src="./images/detailpage-1.png" />
+<img width="1901" alt="Product Detail Page" src="./images/detailpage-2.png" />
 
 
-- **Add new product page**  
-<img width="1901" height="907" alt="image" src="" />
+**Add New Product Page**
+
+<img width="1901" alt="Add New Product Page" src="./images/new-productpage.png" />
+
+### Members' participation
 
 ### Members' participation 
 
@@ -80,7 +88,7 @@ Only the main entity (**Pokémon Product**) will have an associated image.
 2. [CSS button styling](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/499035fe58c3a605e48e517c1db585494398097d)
 3. [New product page](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/fc1f7a041c0139fc623dfe40678c048108504901)
 4. [Fixing logo in new product page](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/30870fb4037f6c32ecff78ee39bf0ae661bac004)
-5. [Commit 5]
+5. [Title styling](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/fc0abffc8b1d596c5a3f75aeb9274c90ca7350b0)
 
 **Files with most participation:**  
 - `new-product.html`
