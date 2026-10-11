@@ -22,48 +22,35 @@ None in use for now.
 
 --------------------------------------------------------------------------
 
-## **Project Description**
+## Project Description
+**PokeURJC** is a web application focused on **browsing and selling Pokémon products.**
 
-**PokeURJC** is a web application focused on **browsing and selling Pokémon products**.
+The application allows users to **explore a collection of Pokémon related products** and access detailed information about each product, such as its **name, price, description, Pokémon and product type.**
+Users can also **add new Pokémon products** to the application. Each product can have an associated **image** and **reviews from users.**
+The main objective of **PokeURJC** is to provide a **simple and intuitive platform** where users can **discover, view and sell Pokémon products.**
 
-The application allows users to **explore a collection of Pokémon related products** (cards, plushies, figures, clothing and accessories) and access detailed information about each product, such as its **name, description, category and price**.
+## Functionality
 
-Users can also **add new Pokémon products** to the application. Each product has an associated **image** and can receive **reviews from users**.
+### Main Entity: Pokémon Product
 
-The main objective of **PokeURJC** is to provide a **simple and intuitive platform** where users can **discover, view and sell Pokémon products**.
+Each product will contain the following information:
 
----
+- Name
+- Price
+- Description
+- Product Type
+- Image
 
-## **Functionality**
+### Secondary Entity: Review
 
-### **Main Entity: Pokémon Product**
+- Author
+- Rating
+- Date
 
-| Attribute | Type | Description |
-|-----------|------|-------------|
-| Name | Text | Name of the product |
-| Description | Long text | Short description of the product |
-| Category | Selection | Cards, Plushies, Figures, Clothing or Accessories |
-| Price | Number | Price in euros |
-| Image | Image | Picture of the product, uploaded from the browser |
+### Images
+Only the main entity (**Pokémon Product**) will have an associated image.
 
-### **Secondary Entity: Review**
 
-| Attribute | Type | Description |
-|-----------|------|-------------|
-| Author | Text | Name of the user who writes the review (max. 50 characters) |
-| Date | Date | Date of the review |
-| Rating | Number | Score from 1 to 5 stars |
-| Text | Long text | Opinion about the product (10 to 300 characters) |
-
-Each product can have several reviews. A review always belongs to one product.
-
-### **Images**
-Only the main entity (**Pokémon Product**) has an associated image.
-
-### **Search, Filtering and Categorization**
-
-- **Search:** a search box in the navigation bar returns the products whose **name** contains the text entered.
-- **Categorization:** products are grouped by **category** (Cards, Plushies, Figures, Clothing and Accessories). Each category is available in the navigation bar to show only the products of that category.
 
 ## Project - Part 1
 
@@ -161,18 +148,22 @@ Only the main entity (**Pokémon Product**) has an associated image.
 
 #### Alvaro Martin Jurado
 **Tasks:**  
-
-
+Create the HTML for detail.html using Bootstrap.
+Adapt the CSS for detail.html.
+Help with the option from new-product.html
 
 **5 most significant commits:**  
-1. [Commit 1]
-2. [Commit 2]
-3. [Commit 3]
-4. [Commit 4]
-5. [Commit 5]
+1.[Create the HTML for detail.html using Bootstrap.](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/c84ae456c9720192b18dbb236875981c7e5da109)
+2.[Adapt Css for detail.html](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/7e9f705c745a5ae70d8bbc7f3220d2a9a09914c9)
+3.[Change the form](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/4d5d2a05d3027c8fa7df3786d06cc096bc17aec9)
+4.[Change required the elements](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/f8e42d705d48a3eae4127d9eca814f5063875e15)
+5.[Change all inputs for required](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/2282c8aee44d0ba1156b8404c70658e94418ebca)
 
 **Files with most participation:**  
-
+[detail.html](https://github.com/CodeURJC-FW-2026-27/webapp20/blob/main/detail.html)
+[new-product.html](https://github.com/CodeURJC-FW-2026-27/webapp20/blob/main/new-product.html)
+[PokeURJC.css](https://github.com/CodeURJC-FW-2026-27/webapp20/blob/main/resources/PokeURJC.css)
+[Readme.md](https://github.com/CodeURJC-FW-2026-27/webapp20/blob/main/README.md)
 
 
 
