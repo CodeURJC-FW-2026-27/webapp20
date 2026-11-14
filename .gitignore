@@ -16,3 +16,6 @@ desktop.ini
 .vscode/*
 !.vscode/settings.json
 .idea/
+
+node_modules/
+.venv/
