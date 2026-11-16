@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="es">
   <head>
@@ -6,11 +7,13 @@
     <meta name="description" content="PokeURJC - Tienda de cartas Pokémon" />
     <title>PokeURJC</title>
     <link rel="icon" type="image/png" href="/images/PokeURJC.png" />
+
     <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+
     <!-- Bootstrap Icons -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
@@ -22,19 +25,25 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Monofett&family=Nabla&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet">
+
     <!-- Project styles -->
     <link href="/PokeURJC.css" rel="stylesheet" />
   </head>
 
-  <!--Navigation bar with bootstrap-->
-
   <body class="d-flex flex-column min-vh-100">
+
     <!-- Navigation bar -->
     <nav class="navbar navbar-expand-lg navbar-dark site-navbar">
       <div class="container">
-        <a href="/" class="navbar-brand d-flex align-items-center fw-bold" >
-          <img class="site-logo me-2" src="/images/PokeURJC.png" alt="Logo de PokeURJC" />
+
+        <a href="/" class="navbar-brand d-flex align-items-center fw-bold">
+          <img
+            class="site-logo me-2"
+            src="/images/PokeURJC.png"
+            alt="Logo de PokeURJC"
+          />
         </a>
+
         <button
           class="navbar-toggler"
           type="button"
@@ -46,30 +55,57 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="mainNavbar">
+
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/">Inicio</a>
+              <a class="nav-link active" aria-current="page" href="/">
+                Inicio
+              </a>
             </li>
-            <li class="nav-item"><a class="nav-link" href="#">Cartas</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Peluches</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Figuras</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Ropa</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Accesorios</a></li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#">Cartas</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#">Peluches</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#">Figuras</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#">Ropa</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#">Accesorios</a>
+            </li>
+
           </ul>
 
-          <form class="d-flex" role="search" action="#" method="GET">
-            <input 
-              class="form-control me-2" 
-              type="search" 
-              placeholder="Buscar productos..." 
+          <!-- Search products by title -->
+          <form class="d-flex" role="search" action="/" method="GET">
+
+            <input
+              class="form-control me-2"
+              type="search"
+              name="search"
+              placeholder="Buscar productos..."
               aria-label="Buscar"
-            >
-            <button class="btn btn-site-secondary" type="button">
+              value="{{search}}"
+            />
+
+            <button class="btn btn-site-secondary" type="submit">
               <i class="bi bi-search"></i> Buscar
             </button>
-          </form> 
-          
+
+          </form>
+
         </div>
       </div>
     </nav>
@@ -82,82 +118,124 @@
       </div>
     </header>
 
+    <!-- Main content -->
     <main class="container py-4">
+
       <div class="d-flex justify-content-end mb-4">
         <a class="btn-site-primary" href="/new-product.html">
           Crear nuevo elemento
         </a>
       </div>
-<section>
-    <h2 class="section-title mb-4">Nuestros productos</h2>
 
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+      <!-- Products section -->
+      <section>
 
-        {{#posts}}
-        <div class="col">
+        <h2 class="section-title mb-4">Nuestros productos</h2>
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+
+          {{#posts}}
+          <div class="col">
+
             <a href="/products/{{_id}}" class="card product-card h-100">
 
-                <img
-                    src="{{image}}"
-                    class="card-img-top product-image"
-                    alt="{{title}}"
-                />
+              <img
+                src="{{image}}"
+                class="card-img-top product-image"
+                alt="{{title}}"
+              />
 
-                <div class="card-body text-center">
-                    <h4 class="product-name">{{title}}</h4>
-                    <p class="product-price mb-0">{{price}}</p>
-                </div>
+              <div class="card-body text-center">
+
+                <h4 class="product-name">{{title}}</h4>
+
+                <p class="product-price mb-0">
+                  {{price}} €
+                </p>
+
+              </div>
 
             </a>
+          </div>
+          {{/posts}}
+
+          {{^posts}}
+          <div class="col-12">
+            <p>
+              No se han encontrado productos.
+            </p>
+          </div>
+          {{/posts}}
+
         </div>
-        {{/posts}}
 
-        {{^posts}}
-        <div class="col-12">
-            <p>Todavía no hay productos disponibles.</p>
-        </div>
-        {{/posts}}
+        <!-- Pagination -->
+        <nav aria-label="Product pagination" class="mt-5">
 
-    </div>
+          <ul class="pagination justify-content-center">
 
-    <!-- Pagination -->
-    <nav aria-label="Product pagination" class="mt-5">
-        <ul class="pagination justify-content-center">
-
+            <!-- Previous page -->
             <li class="page-item {{^hasPrev}}disabled{{/hasPrev}}">
-                <a class="page-link" href="/?page={{prevPage}}">
-                    Anterior
-                </a>
+
+              <a
+                class="page-link"
+                href="/?page={{prevPage}}&search={{search}}"
+              >
+                Anterior
+              </a>
+
             </li>
 
+            <!-- Page numbers -->
             {{#pages}}
             <li class="page-item {{#isCurrent}}active{{/isCurrent}}">
-                <a class="page-link" href="/?page={{number}}">
-                    {{number}}
-                </a>
+
+              <a
+                class="page-link"
+                href="/?page={{number}}&search={{search}}"
+              >
+                {{number}}
+              </a>
+
             </li>
             {{/pages}}
 
+            <!-- Next page -->
             <li class="page-item {{^hasNext}}disabled{{/hasNext}}">
-                <a class="page-link" href="/?page={{nextPage}}">
-                    Siguiente
-                </a>
+
+              <a
+                class="page-link"
+                href="/?page={{nextPage}}&search={{search}}"
+              >
+                Siguiente
+              </a>
+
             </li>
 
-        </ul>
-    </nav>
-</section>
-</main>
-    
+          </ul>
+
+        </nav>
+
+      </section>
+
+    </main>
+
+    <!-- Footer -->
     <footer class="site-footer py-4 mt-auto">
+
       <div class="container text-center">
+
         <p class="mb-1 fw-bold">PokeURJC</p>
+
         <p class="mb-0 small">
           Proyecto de Fundamentos de la Web · URJC 2026–27 · webapp20
         </p>
+
       </div>
+
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
   </body>
 </html>

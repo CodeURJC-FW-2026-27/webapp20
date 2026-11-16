@@ -11,10 +11,21 @@ export default router;
 const upload = multer({ dest: products.UPLOADS_FOLDER });
 
 // Homepage
+
+// Homepage, search and pagination
 router.get('/', async (req, res) => {
     try {
+        const search = req.query.search || '';
         const page = parseInt(req.query.page) || 1;
-        const result = await products.getProducts(page, 6);
+        const limit = 6;
+
+        let result;
+
+        if (search) {
+            result = await products.searchProducts(search, page, limit);
+        } else {
+            result = await products.getProducts(page, limit);
+        }
 
         const prevPage = result.currentPage - 1;
         const nextPage = result.currentPage + 1;
@@ -26,13 +37,16 @@ router.get('/', async (req, res) => {
             hasPrev: result.currentPage > 1,
             hasNext: result.currentPage < result.totalPages,
             prevPage,
-            nextPage
+            nextPage,
+            search
         });
+
     } catch (error) {
         console.error('Error loading products:', error);
         res.status(500).send('Error loading products');
     }
 });
+
 
 // New product
 router.get('/new-product.html', (req, res) => {

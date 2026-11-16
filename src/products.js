@@ -61,3 +61,44 @@ export async function getProducts(page = 1, limit = 6) {
 export async function getProduct(id) {
     return await products.findOne({ _id: new ObjectId(id) });
 }
+// Search products by title
+
+// Search products by title with pagination
+export async function searchProducts(search, page = 1, limit = 6) {
+    const filter = {
+        title: {
+            $regex: search,
+            $options: 'i'
+        }
+    };
+
+    const totalProducts = await products.countDocuments(filter);
+    const totalPages = Math.ceil(totalProducts / limit) || 1;
+
+    const currentPage = Math.min(
+        Math.max(parseInt(page) || 1, 1),
+        totalPages
+    );
+
+    const skip = (currentPage - 1) * limit;
+
+    const postList = await products
+        .find(filter)
+        .sort({ _id: 1 })
+        .skip(skip)
+        .limit(limit)
+        .toArray();
+
+    const pages = Array.from({ length: totalPages }, (_, i) => ({
+        number: i + 1,
+        isCurrent: i + 1 === currentPage
+    }));
+
+    return {
+        posts: postList,
+        totalPages,
+        currentPage,
+        pages
+    };
+}
+
