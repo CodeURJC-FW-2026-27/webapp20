@@ -102,3 +102,50 @@ export async function searchProducts(search, page = 1, limit = 6) {
     };
 }
 
+// Get products filtered by title and category with pagination
+export async function filterProducts(search = '', category = '', page = 1, limit = 6) {
+
+    const filter = {};
+
+    if (search) {
+        filter.title = {
+            $regex: search,
+            $options: 'i'
+        };
+    }
+
+    if (category) {
+        filter.category = category;
+    }
+
+    const totalProducts = await products.countDocuments(filter);
+    const totalPages = Math.ceil(totalProducts / limit) || 1;
+
+    const currentPage = Math.min(
+        Math.max(parseInt(page) || 1, 1),
+        totalPages
+    );
+
+    const skip = (currentPage - 1) * limit;
+
+    const postList = await products
+        .find(filter)
+        .sort({ _id: 1 })
+        .skip(skip)
+        .limit(limit)
+        .toArray();
+
+    const pages = Array.from({ length: totalPages }, (_, i) => ({
+        number: i + 1,
+        isCurrent: i + 1 === currentPage
+    }));
+
+    return {
+        posts: postList,
+        totalPages,
+        currentPage,
+        pages
+    };
+}
+
+

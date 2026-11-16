@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="PokeURJC - Tienda de cartas Pokémon" />
     <title>PokeURJC</title>
+
     <link rel="icon" type="image/png" href="/images/PokeURJC.png" />
 
     <!-- Bootstrap CSS -->
@@ -23,8 +24,14 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Monofett&family=Nabla&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Monofett&family=Nabla&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Project styles -->
     <link href="/PokeURJC.css" rel="stylesheet" />
@@ -58,32 +65,37 @@
 
         <div class="collapse navbar-collapse" id="mainNavbar">
 
+          <!-- Category navigation -->
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/">
+              <a class="nav-link" href="/">
                 Inicio
               </a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="#">Cartas</a>
+              <a class="nav-link" href="/?category=Cartas">
+                Cartas
+              </a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="#">Peluches</a>
+              <a class="nav-link" href="/?category=Peluches">
+                Peluches
+              </a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="#">Figuras</a>
+              <a class="nav-link" href="/?category=Figuras">
+                Figuras
+              </a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="#">Ropa</a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link" href="#">Accesorios</a>
+              <a class="nav-link" href="/?category=Ropa">
+                Ropa
+              </a>
             </li>
 
           </ul>
@@ -132,12 +144,25 @@
 
         <h2 class="section-title mb-4">Nuestros productos</h2>
 
+        <!-- Active filters -->
+        {{#search}}
+        <p>Resultados para: <strong>{{search}}</strong></p>
+        {{/search}}
+
+        {{#category}}
+        <p>Categoría seleccionada: <strong>{{category}}</strong></p>
+        {{/category}}
+
         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
 
+          <!-- Product cards -->
           {{#posts}}
           <div class="col">
 
-            <a href="/products/{{_id}}" class="card product-card h-100">
+            <a
+              href="/products/{{_id}}"
+              class="card product-card h-100"
+            >
 
               <img
                 src="{{image}}"
@@ -150,7 +175,7 @@
                 <h4 class="product-name">{{title}}</h4>
 
                 <p class="product-price mb-0">
-                  {{price}} €
+                  {{price}}
                 </p>
 
               </div>
@@ -159,11 +184,10 @@
           </div>
           {{/posts}}
 
+          <!-- No products found -->
           {{^posts}}
           <div class="col-12">
-            <p>
-              No se han encontrado productos.
-            </p>
+            <p>No se han encontrado productos.</p>
           </div>
           {{/posts}}
 
@@ -179,7 +203,7 @@
 
               <a
                 class="page-link"
-                href="/?page={{prevPage}}&search={{search}}"
+                href="/?page={{prevPage}}&search={{search}}&category={{category}}"
               >
                 Anterior
               </a>
@@ -192,7 +216,7 @@
 
               <a
                 class="page-link"
-                href="/?page={{number}}&search={{search}}"
+                href="/?page={{number}}&search={{search}}&category={{category}}"
               >
                 {{number}}
               </a>
@@ -205,7 +229,7 @@
 
               <a
                 class="page-link"
-                href="/?page={{nextPage}}&search={{search}}"
+                href="/?page={{nextPage}}&search={{search}}&category={{category}}"
               >
                 Siguiente
               </a>
@@ -222,7 +246,6 @@
 
     <!-- Footer -->
     <footer class="site-footer py-4 mt-auto">
-
       <div class="container text-center">
 
         <p class="mb-1 fw-bold">PokeURJC</p>
@@ -232,9 +255,9 @@
         </p>
 
       </div>
-
     </footer>
 
+    <!-- Bootstrap JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
   </body>
