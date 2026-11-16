@@ -88,8 +88,6 @@
           Crear nuevo elemento
         </a>
       </div>
-
-      
 <section>
     <h2 class="section-title mb-4">Nuestros productos</h2>
 
@@ -121,6 +119,33 @@
         {{/posts}}
 
     </div>
+
+    <!-- Pagination -->
+    <nav aria-label="Product pagination" class="mt-5">
+        <ul class="pagination justify-content-center">
+
+            <li class="page-item {{^hasPrev}}disabled{{/hasPrev}}">
+                <a class="page-link" href="/?page={{prevPage}}">
+                    Anterior
+                </a>
+            </li>
+
+            {{#pages}}
+            <li class="page-item {{#isCurrent}}active{{/isCurrent}}">
+                <a class="page-link" href="/?page={{number}}">
+                    {{number}}
+                </a>
+            </li>
+            {{/pages}}
+
+            <li class="page-item {{^hasNext}}disabled{{/hasNext}}">
+                <a class="page-link" href="/?page={{nextPage}}">
+                    Siguiente
+                </a>
+            </li>
+
+        </ul>
+    </nav>
 </section>
 </main>
     

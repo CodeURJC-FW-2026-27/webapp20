@@ -1,3 +1,4 @@
+
 import express from 'express';
 import multer from 'multer';
 import fs from 'node:fs/promises';
@@ -7,27 +8,40 @@ import * as products from './products.js';
 const router = express.Router();
 export default router;
 
-const upload = multer({ dest: products.UPLOADS_FOLDER })
+const upload = multer({ dest: products.UPLOADS_FOLDER });
 
-//Homepage
+// Homepage
 router.get('/', async (req, res) => {
+    try {
+        const page = parseInt(req.query.page) || 1;
+        const result = await products.getProducts(page, 6);
 
-    let posts = await products.getProducts();
+        const prevPage = result.currentPage - 1;
+        const nextPage = result.currentPage + 1;
 
-    res.render('index', { posts });
+        res.render('index', {
+            posts: result.posts,
+            pages: result.pages,
+            currentPage: result.currentPage,
+            hasPrev: result.currentPage > 1,
+            hasNext: result.currentPage < result.totalPages,
+            prevPage,
+            nextPage
+        });
+    } catch (error) {
+        console.error('Error loading products:', error);
+        res.status(500).send('Error loading products');
+    }
 });
 
-// New product 
+// New product
 router.get('/new-product.html', (req, res) => {
-    
     res.render('new-product');
 });
 
-
-
+// Create new product
 router.post('/products/new', upload.single('image'), async (req, res) => {
-
-    let product = {
+    const product = {
         user: req.body.user,
         title: req.body.title,
         text: req.body.text,
@@ -36,42 +50,54 @@ router.post('/products/new', upload.single('image'), async (req, res) => {
         image: req.file ? '/uploads/' + req.file.filename : undefined
     };
 
-    await products.addProduct(product);
+    const result = await products.addProduct(product);
 
-    res.render('saved_product', { _id: product._id.toString() });
-
+    res.render('saved_product', {
+        _id: result.insertedId.toString()
+    });
 });
 
+// Product details
 router.get('/products/:id', async (req, res) => {
+    const product = await products.getProduct(req.params.id);
 
-    let product = await products.getProduct(req.params.id);
+    if (!product) {
+        return res.status(404).send('Producto no encontrado');
+    }
 
     res.render('detail', { product });
 });
 
+// Delete product
 router.get('/products/:id/delete', async (req, res) => {
+    const product = await products.deleteProduct(req.params.id);
 
-    let product = await products.deleteProduct(req.params.id);
-
-    if (product && product.imageFilename) {
-        await fs.rm(products.UPLOADS_FOLDER + '/' + product.imageFilename);
+    if (product && product.image) {
+        await fs.rm(
+            products.UPLOADS_FOLDER + '/' + product.image.split('/').pop(),
+            { force: true }
+        );
     }
 
     res.render('deleted_product');
 });
 
+// Download product image
 router.get('/products/:id/image', async (req, res) => {
+    const product = await products.getProduct(req.params.id);
 
-    let product = await products.getProduct(req.params.id);
+    if (!product || !product.image) {
+        return res.status(404).send('Imagen no encontrada');
+    }
 
-    res.download(products.UPLOADS_FOLDER + '/' + product.imageFilename);
-
+    res.download(
+        products.UPLOADS_FOLDER + '/' + product.image.split('/').pop()
+    );
 });
 
 // Edit product page
 router.get('/products/:id/edit', async (req, res) => {
-
-    let product = await products.getProduct(req.params.id);
+    const product = await products.getProduct(req.params.id);
 
     if (!product) {
         return res.status(404).send('Producto no encontrado');
