@@ -1,5 +1,5 @@
 import fs from 'node:fs/promises';
-import * as board from './board.js';
+import * as products from './products.js';
 
 const UPLOADS_FOLDER = './uploads';
 const DATA_FOLDER = './data';
@@ -8,11 +8,11 @@ let dataFile = 'data.json';
 
 const dataString = await fs.readFile(DATA_FOLDER + '/' + dataFile, 'utf8');
 
-const posts = JSON.parse(dataString);
+const productsList = JSON.parse(dataString);
 
-await board.deletePosts();
-for(let post of posts){
-    await board.addPost(post);
+await products.deleteProducts();
+for(let product of productsList){
+    await products.addProduct(product);
 }
 
 await fs.rm(UPLOADS_FOLDER, { recursive: true, force: true });

@@ -15,6 +15,8 @@ app.set('views', './views');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use('/uploads', express.static('./uploads'));
+
 app.use('/', router);
 
 app.listen(3000, () => console.log('Web ready in http://localhost:3000/'));

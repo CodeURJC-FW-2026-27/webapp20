@@ -82,101 +82,47 @@
       </div>
     </header>
 
-
     <main class="container py-4">
       <div class="d-flex justify-content-end mb-4">
-        <a class="btn-site-primary" href="/new-product.html">Crear nuevo elemento</a>
+        <a class="btn-site-primary" href="/new-product.html">
+          Crear nuevo elemento
+        </a>
       </div>
 
-      <!-- All products displayed in a grid -->
-      <section>
-        <h2 class="section-title mb-4">Nuestros productos</h2>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
-          <div class="col">
-            <a href="/detail.html" class="card product-card h-100">
-              <img src="/images/products/30-aniversario-2-pack-blister-v3-ingles.webp" class="card-img-top product-image" alt="Blister 30 aniversario" />
-              <div class="card-body text-center">
-                <h4 class="product-name">Blister 2 Sobres 30 Aniversario (ESPAÑOL)</h4>
-                <p class="product-price mb-0">17,99 €</p>
-              </div>
-            </a>
-          </div>
-          <div class="col">
-            <a href="/detail.html" class="card product-card h-100">
-              <img src="/images/products/30aniv-pokemon-ex-box-f1-espanol.webp" class="card-img-top product-image" alt="Caja 30 Aniversario Silveon" />
-              <div class="card-body text-center">
-                <h4 class="product-name">Pokemon EX Box 30 Aniversario (ESPAÑOL)</h4>
-                <p class="product-price mb-0">34,99 €</p>
-              </div>
-            </a>
-          </div>
-          <div class="col">
-            <a href="/detail.html" class="card product-card h-100">
-              <img src="/images/products/etb_elite_trainer_box_30_aniversario_pokemon.webp" class="card-img-top product-image" alt="30 Aniversario ETB" />
-              <div class="card-body text-center">
-                <h4 class="product-name">30 Aniversario ETB <br> (ESPAÑOL)</h4>
-                <p class="product-price mb-0">59,99 €</p>
-              </div>
-            </a>
-          </div>
-          <div class="col">
-            <a href="/detail.html" class="card product-card h-100">
-              <img src="/images/products/transparent-Photoroom_75.webp" class="card-img-top product-image" alt="PSA 10 RESHIRAM SIR" />
-              <div class="card-body text-center">
-                <h4 class="product-name">POKEMON RESHIRAM EX SAR 168/086 SV11W WHITE FLARE PSA 10 (JAPONÉS)</h4>
-                <p class="product-price mb-0">259,90 €</p>
-              </div>
-            </a>
-          </div>
-          <div class="col">
-            <a href="/detail.html" class="card product-card h-100">
-              <img src="/images/products/transparent-Photoroom_77.webp" class="card-img-top product-image" alt="PSA 10 ZEKROM SIR" />
-              <div class="card-body text-center">
-                <h4 class="product-name">POKEMON ZEKROM EX SAR 169/086 SV11B BLACK BOLT PSA 10 (JAPONÉS)</h4>
-                <p class="product-price mb-0">254,99 €</p>
-              </div>
-            </a>
-          </div>
-          <div class="col">
-            <a href="/detail.html" class="card product-card h-100">
-              <img src="/images/products/Rh9ioty9Uka6id6sUzFWrw-Photoroom.webp" class="card-img-top product-image" alt="PSA 10 PIKACHU CULON" />
-              <div class="card-body text-center">
-                <h4 class="product-name">PIKACHU SAR 132/106 SV8 SUPER ELECTRIC BREAKER PSA 10 (JAPONÉS)</h4>
-                <p class="product-price mb-0">749,99 €</p>
-              </div>
-            </a>
-          </div>
-          <div class="col">
-            <a href="/detail.html" class="card product-card h-100">
-              <img src="/images/products/Gallade_figure.webp" class="card-img-top product-image" alt="Figura articulada gallade" />
-              <div class="card-body text-center">
-                <h4 class="product-name">Figura articulada Gallade</h4>
-                <p class="product-price mb-0">34,99 €</p>
-              </div>
-            </a>
-          </div>
-          <div class="col">
-            <a href="/detail.html" class="card product-card h-100">
-              <img src="/images/products/Gallade_Plushie.webp" class="card-img-top product-image" alt="Gallade Plushie" />
-              <div class="card-body text-center">
-                <h4 class="product-name">Gallade Plushie</h4>
-                <p class="product-price mb-0">15,99 €</p>
-              </div>
-            </a>
-          </div>
-          <div class="col">
-            <a href="/detail.html" class="card product-card h-100">
-              <img src="/images/products/Pikachu-Shirt.webp" class="card-img-top product-image" alt="Camiseta pikachu" />
-              <div class="card-body text-center">
-                <h4 class="product-name">Camiseta Pikachu</h4>
-                <p class="product-price mb-0">11,99 €</p>
-              </div>
-            </a>
-          </div>
-        </div>
-      </section>
-    </main>
+      
+<section>
+    <h2 class="section-title mb-4">Nuestros productos</h2>
 
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+
+        {{#posts}}
+        <div class="col">
+            <a href="/products/{{_id}}" class="card product-card h-100">
+
+                <img
+                    src="{{image}}"
+                    class="card-img-top product-image"
+                    alt="{{title}}"
+                />
+
+                <div class="card-body text-center">
+                    <h4 class="product-name">{{title}}</h4>
+                    <p class="product-price mb-0">{{price}}</p>
+                </div>
+
+            </a>
+        </div>
+        {{/posts}}
+
+        {{^posts}}
+        <div class="col-12">
+            <p>Todavía no hay productos disponibles.</p>
+        </div>
+        {{/posts}}
+
+    </div>
+</section>
+</main>
     
     <footer class="site-footer py-4 mt-auto">
       <div class="container text-center">
