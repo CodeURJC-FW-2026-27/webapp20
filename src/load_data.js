@@ -17,6 +17,5 @@ for(let product of productsList){
 
 await fs.rm(UPLOADS_FOLDER, { recursive: true, force: true });
 await fs.mkdir(UPLOADS_FOLDER);
-await fs.cp(DATA_FOLDER + '/images', UPLOADS_FOLDER, { recursive: true });
 
 console.log('Demo data loaded');

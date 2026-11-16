@@ -82,13 +82,21 @@ router.get('/products/:id', async (req, res) => {
     res.render('detail', { product });
 });
 
-// Delete product
-router.get('/products/:id/delete', async (req, res) => {
-    const product = await products.deleteProduct(req.params.id);
 
-    if (product && product.image) {
+// Delete product
+router.post('/products/:id/delete', async (req, res) => {
+
+    let product = await products.deleteProduct(req.params.id);
+
+    if (!product) {
+        return res.status(404).render('error', {
+            message: 'No se ha encontrado el producto.'
+        });
+    }
+
+    if (product && product.imageFilename) {
         await fs.rm(
-            products.UPLOADS_FOLDER + '/' + product.image.split('/').pop(),
+            products.UPLOADS_FOLDER + '/' + product.imageFilename,
             { force: true }
         );
     }
@@ -103,11 +111,15 @@ router.get('/products/:id/image', async (req, res) => {
     if (!product || !product.image) {
         return res.status(404).send('Imagen no encontrada');
     }
-
+    
+    if (!imageFilename) {
+        return res.sendStatus(404);
+    }
     res.download(
         products.UPLOADS_FOLDER + '/' + product.image.split('/').pop()
     );
 });
+
 
 // Edit product page
 router.get('/products/:id/edit', async (req, res) => {
