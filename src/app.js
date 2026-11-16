@@ -20,3 +20,7 @@ app.use('/uploads', express.static('./uploads'));
 app.use('/', router);
 
 app.listen(3000, () => console.log('Web ready in http://localhost:3000/'));
+app.engine(
+    'html',
+    mustacheExpress('./views/partials', '.html')
+);
