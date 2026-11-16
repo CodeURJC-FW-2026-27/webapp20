@@ -1,8 +1,10 @@
 import fs from 'node:fs/promises';
 import * as products from './products.js';
 
+
 const UPLOADS_FOLDER = './uploads';
 const DATA_FOLDER = './data';
+const IMAGES_FOLDER = './public/images/products';
 
 let dataFile = 'data.json';
 
@@ -19,3 +21,4 @@ await fs.rm(UPLOADS_FOLDER, { recursive: true, force: true });
 await fs.mkdir(UPLOADS_FOLDER);
 
 console.log('Demo data loaded');
+
