@@ -165,4 +165,76 @@ router.post('/products/:id/delete', async (req, res) => {
 
 
 
+router.get('/products/:id/edit', async (req, res) => {
+    const id = req.params.id;
 
+    if (!ObjectId.isValid(id)) {
+        return res.status(404).render('deleted_product');
+    }
+
+    const product = await products.getProduct(id);
+
+    if (!product) {
+        return res.status(404).render('deleted_product');
+    }
+
+    product.isCartas = product.category === 'Cartas';
+    product.isPeluches = product.category === 'Peluches';
+    product.isFiguras = product.category === 'Figuras';
+    product.isRopa = product.category === 'Ropa';
+    product.isAccesorios = product.category === 'Accesorios';
+    product.priceInput = String(product.price);
+
+    res.render('edit-product', { product });
+});
+
+
+router.post('/products/:id/edit', upload.single('image'), async (req, res) => {
+    const id = req.params.id;
+
+    if (!ObjectId.isValid(id)) {
+        return res.status(404).render('deleted_product');
+    }
+
+    const existing = await products.getProduct(id);
+
+    if (!existing) {
+        return res.status(404).render('deleted_product');
+    }
+
+    const updatedFields = {
+        title: (req.body.title || '').trim(),
+        text: (req.body.text || '').trim(),
+        price: (req.body.price || '').trim(),
+        category: (req.body.category || '').trim()
+    };
+
+    const errors = validateProduct(updatedFields);
+
+    if (errors.length > 0) {
+        if (req.file) {await fs.rm(products.UPLOADS_FOLDER + '/' + req.file.filename,
+            { force: true }
+    );
+}
+        return res.status(400).render('error', {
+            message: errors.join(' '),
+            backUrl: `/products/${id}/edit`,
+            backText: 'Volver a editar el producto'
+        });
+    }
+
+    updatedFields.price = Number(updatedFields.price);
+
+    if (req.file) {
+        updatedFields.image = `/uploads/${req.file.filename}`;
+    }
+
+    await products.updateProduct(id, updatedFields);
+
+    if (req.file && existing.image && existing.image.startsWith('/uploads/')) {
+    const oldFilename = existing.image.replace('/uploads/', '');
+    await fs.rm(products.UPLOADS_FOLDER + '/' + oldFilename, { force: true });
+}
+
+    res.render('updated_product', { productId: id });
+});
