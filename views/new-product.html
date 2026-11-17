@@ -1,105 +1,115 @@
-<!doctype html>
-<html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="PokeURJC - Añadir nuevo producto"/>
-    <title>Añadir producto </title>
+{{> header}}
 
-    <link rel="icon" type="image/png" href="images/PokeURJC.png" />
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <!-- Bootstrap Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"rel="stylesheet"/>
-    <!-- Project styles -->
-    <link href="/PokeURJC.css" rel="stylesheet" />
-  </head>
-
-
-  <body class="d-flex flex-column min-vh-100">
-
-    <!-- Navigation bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark site-navbar">
-      <div class="container">
-        <a href="index.html" class="navbar-brand d-flex align-items-center fw-bold">
-          <img src="images/PokeURJC.png" class="site-logo me-2" alt="Logo de PokeURJC"/>
+<!-- ===== Main content: product form (used to create and to edit) ===== -->
+<main class="container flex-grow-1 py-5">
+    <div class="mb-4">
+        <a href="{{cancelUrl}}" class="btn btn-site-secondary">
+            <i class="bi bi-arrow-left me-1"></i> Volver
         </a>
-      </div>
-    </nav>
+    </div>
 
+    <h1 class="page-title mb-4">
+        {{#isEdit}}Editar producto{{/isEdit}}{{^isEdit}}Añadir nuevo producto{{/isEdit}}
+    </h1>
 
-
-    <!-- Add product page -->
-    <main class="container py-5">
-      <div class="mb-4">
-        <a href="index.html" class="btn-site-primary">
-          <i class="bi bi-arrow-left"></i> Volver
-        </a>
-      </div>
-
-      <h2 class="add-product-title mb-4">Añadir nuevo producto</h2>
-      <div class="row g-4">
-        <!-- Product image -->
+    <div class="row g-4">
+        <!-- Current image when editing, icon when creating -->
         <div class="col-12 col-lg-5">
-          <div class="add-product-image">
-            <img src="images/newproduct_icon.png_bg_removed.png.png" alt="Icono de nuevo producto"/>
-          </div>
+            <div class="image-panel">
+                {{#isEdit}}
+                <img src="{{product.image}}" alt="{{product.title}}" />
+                {{/isEdit}}
+                {{^isEdit}}
+                <img src="/images/newproduct_icon.png_bg_removed.png.png" alt="Icono de nuevo producto" />
+                {{/isEdit}}
+            </div>
         </div>
 
         <!-- Form -->
         <div class="col-12 col-lg-7">
-          <form action="/products/new" method="POST" enctype="multipart/form-data">
-            <div class="mb-3">
-              <label for="productName" class="form-label">Nombre del producto</label>
-              <input type="text" class="form-control" id="productName" name="title" maxlength="100" placeholder="Ej. Carta Charizard" required/>
-            </div>
+            <form class="review-form" action="{{formAction}}" method="POST" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="productTitle" class="form-label">Nombre del producto</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="productTitle"
+                        name="title"
+                        value="{{product.title}}"
+                        placeholder="Ej. Carta Charizard"
+                        required
+                        maxlength="100"
+                        pattern="[A-ZÁÉÍÓÚÑ].*"
+                        title="El nombre debe empezar por mayúscula"
+                    />
+                </div>
 
-            <div class="mb-3">
-              <label for="description" class="form-label">Descripción</label>
-              <textarea class="form-control" id="description" name="text" rows="4" placeholder="Escribe una breve descripción del producto" required></textarea>
-            </div>
+                <div class="mb-3">
+                    <label for="productText" class="form-label">Descripción</label>
+                    <textarea
+                        class="form-control"
+                        id="productText"
+                        name="text"
+                        rows="4"
+                        placeholder="Escribe una descripción del producto (entre 20 y 500 caracteres)"
+                        required
+                        minlength="20"
+                        maxlength="500"
+                    >{{product.text}}</textarea>
+                </div>
 
-            <div class="mb-3">
-              <label for="category" class="form-label">Categoría</label>
-              <select class="form-select" id="category" name="category" required>
-                <option disabled selected value="">Selecciona una categoría</option>
-                <option>Cartas</option>
-                <option>Peluches</option>
-                <option>Figuras</option>
-                <option>Ropa</option>
-                <option>Accesorios</option>
-              </select>
-            </div>
+                <div class="mb-3">
+                    <label for="productCategory" class="form-label">Categoría</label>
+                    <select class="form-select" id="productCategory" name="category" required>
+                        <option value="" disabled {{^isEdit}}selected{{/isEdit}}>Selecciona una categoría</option>
+                        {{#categoryOptions}}
+                        <option value="{{name}}" {{#selected}}selected{{/selected}}>{{name}}</option>
+                        {{/categoryOptions}}
+                    </select>
+                </div>
 
-            <div class="mb-3">
-              <label for="price" class="form-label">Precio</label>
-              <input type="number" name="price" min="0" step="0.01" class="form-control" id="price" placeholder="Ej. 29.99 €" required/>
-            </div>
+                <div class="mb-3">
+                    <label for="productPrice" class="form-label">Precio (€)</label>
+                    <input
+                        type="number"
+                        class="form-control"
+                        id="productPrice"
+                        name="price"
+                        value="{{product.price}}"
+                        placeholder="Ej. 29.99"
+                        required
+                        min="0.01"
+                        max="10000"
+                        step="0.01"
+                    />
+                </div>
 
-            <div class="mb-4">
-              <label for="file" class="form-label">Imagen del producto</label>
-              <input type="file" name="image" class="form-control" id="file" accept=".png,.jpg,.jpeg" required/>
-            </div>
+                <div class="mb-4">
+                    <label for="productImage" class="form-label">
+                        {{#isEdit}}Cambiar imagen (opcional){{/isEdit}}{{^isEdit}}Imagen del producto{{/isEdit}}
+                    </label>
+                    <input
+                        type="file"
+                        class="form-control"
+                        id="productImage"
+                        name="image"
+                        accept=".png,.jpg,.jpeg"
+                        {{^isEdit}}required{{/isEdit}}
+                    />
+                    {{#isEdit}}
+                    <div class="form-text">Si no eliges ninguna imagen, se mantiene la actual.</div>
+                    {{/isEdit}}
+                </div>
 
-            <div class="d-flex justify-content-end gap-2">
-              <a href="index.html" class="btn-site-secondary">Cancelar</a>
-              <button type="submit" class="btn-site-primary">Guardar producto</button>
-            </div>
-
-          </form>
+                <div class="d-flex justify-content-end gap-2">
+                    <a href="{{cancelUrl}}" class="btn btn-site-secondary">Cancelar</a>
+                    <button type="submit" class="btn btn-site-primary">
+                        {{#isEdit}}Guardar cambios{{/isEdit}}{{^isEdit}}Guardar producto{{/isEdit}}
+                    </button>
+                </div>
+            </form>
         </div>
+    </div>
+</main>
 
-      </div>
-    </main>
-
-    <!-- Footer -->
-    {{> footer}}
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  </body>
-</html>
-
-
-
-
-   
+{{> footer}}
