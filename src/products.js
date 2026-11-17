@@ -36,6 +36,10 @@ export async function updateProduct(id, fields) {
     return await products.updateOne({ _id: ObjectId.createFromHexString(id) }, { $set: fields });
 }
 
+export async function updateProductImagePath(oldPath, newPath) {
+    return await products.updateMany({ image: oldPath }, { $set: { image: newPath } });
+}
+
 // Returns the deleted product, so its image can be removed
 export async function deleteProduct(id) {
     return await products.findOneAndDelete({ _id: ObjectId.createFromHexString(id) });

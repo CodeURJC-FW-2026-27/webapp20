@@ -257,7 +257,7 @@ Make **one commit per change**, not one huge commit at the end of the day.
    ```
 5. Open [http://localhost:3000](http://localhost:3000) in the browser.
 
-When the application starts with an empty database, it loads the sample products and reviews from `data/data.json`.
+On every start, the application copies the sample product images from `data/` to `uploads/`. When the database is empty, it also loads the sample products and reviews from `data/data.json`.
 
 ### Files Description
 
@@ -266,8 +266,9 @@ When the application starts with an empty database, it loads the sample products
 | `src/app.js` | Creates the Express server, configures Mustache templates and partials, serves static files and the `uploads` folder, and starts the server on port 3000. |
 | `src/router.js` | Defines all the routes: main page with search, categories and pagination, product detail, create, edit and delete products and reviews. Validates the data received and renders confirmation or error pages. |
 | `src/products.js` | Connects to MongoDB and contains all the database operations for products and their reviews. |
-| `src/load_data.js` | Loads the sample data from `data/data.json` when the database is empty. |
-| `data/data.json` | Sample products with their reviews. |
+| `src/load_data.js` | Copies sample images from `data/` to `uploads/` and loads sample products from `data/data.json` when the database is empty. |
+| `data/data.json` | Sample products with their reviews and image filenames. |
+| `data/*.webp` | Source images for the sample products. |
 | `views/index.html` | Main page: product grid, search results, category filter and pagination. |
 | `views/detail.html` | Product detail with its reviews and the form to add a new review. |
 | `views/new-product.html` | Form to create a new product, also used to edit an existing one. |
