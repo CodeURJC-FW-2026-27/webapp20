@@ -12,6 +12,11 @@ export default router;
 const upload = multer({ dest: products.UPLOADS_FOLDER });
 const categories = ['Cartas', 'Peluches', 'Figuras', 'Ropa', 'Accesorios'];
 
+// Passes errors of async routes to the error handler instead of crashing the server
+function asyncRoute(handler) {
+    return (req, res, next) => handler(req, res, next).catch(next);
+}
+
 // ---------- Rendering helpers ----------
 
 function renderConfirmation(res, { title, message, backUrl, backText }) {
@@ -42,10 +47,15 @@ function renderProductForm(res, product = {}) {
         }))
     });
 }
+
 // ---------- Data helpers ----------
 
 function trimmedField(value) {
     return typeof value === 'string' ? value.trim() : '';
+}
+
+function today() {
+    return new Date().toISOString().slice(0, 10);
 }
 
 async function findProduct(id) {
@@ -142,7 +152,6 @@ function readReviewForm(body = {}) {
     return {
         title: trimmedField(body.title),
         author: trimmedField(body.author),
-        date: trimmedField(body.date),
         rating: Number(body.rating),
         text: trimmedField(body.text)
     };
@@ -171,15 +180,6 @@ function validateReview(review, product, currentReviewId) {
         errors.push('El autor es obligatorio.');
     } else if (review.author.length > 50) {
         errors.push('El autor no puede superar los 50 caracteres.');
-    }
-
-    const date = new Date(`${review.date}T00:00:00.000Z`);
-    if (
-        !/^\d{4}-\d{2}-\d{2}$/.test(review.date) ||
-        Number.isNaN(date.getTime()) ||
-        date.toISOString().slice(0, 10) !== review.date
-    ) {
-        errors.push('Introduce una fecha válida.');
     }
 
     if (!Number.isInteger(review.rating) || review.rating < 1 || review.rating > 5) {
@@ -224,44 +224,39 @@ async function saveProduct(req, res, existing) {
         product.image = uploadedImage;
     }
 
-    try {
-        if (existing) {
-            // If no new image is chosen, the previous one is kept
-            await products.updateProduct(id, product);
-            if (uploadedImage) {
-                await removeUpload(existing.image);
-            }
-
-            return renderConfirmation(res, {
-                title: 'Producto actualizado',
-                message: 'Los cambios se han guardado correctamente.',
-                backUrl: `/products/${id}`,
-                backText: 'Ver producto'
-            });
+    if (existing) {
+        // If no new image is chosen, the previous one is kept
+        await products.updateProduct(id, product);
+        if (uploadedImage) {
+            await removeUpload(existing.image);
         }
 
-        const result = await products.addProduct({ ...product, reviews: [] });
-
         return renderConfirmation(res, {
-            title: 'Producto creado',
-            message: 'El producto se ha añadido correctamente.',
-            backUrl: `/products/${result.insertedId}`,
+            title: 'Producto actualizado',
+            message: 'Los cambios se han guardado correctamente.',
+            backUrl: `/products/${id}`,
             backText: 'Ver producto'
         });
-    } catch (error) {
-        console.error('Error saving product:', error);
-        await removeUpload(uploadedImage);
-        return renderError(res, 500, { message: 'No se pudo guardar el producto. Inténtalo de nuevo.' });
     }
+
+    const result = await products.addProduct({ ...product, reviews: [] });
+
+    return renderConfirmation(res, {
+        title: 'Producto creado',
+        message: 'El producto se ha añadido correctamente.',
+        backUrl: `/products/${result.insertedId}`,
+        backText: 'Ver producto'
+    });
 }
 
 // ---------- Main page ----------
 
-router.get('/', async (req, res) => {
-    const search = trimmedField(req.query.search);
-    const category = categories.includes(req.query.category) ? req.query.category : '';
+router.get(
+    '/',
+    asyncRoute(async (req, res) => {
+        const search = trimmedField(req.query.search);
+        const category = categories.includes(req.query.category) ? req.query.category : '';
 
-    try {
         const result = await products.getProducts(search, category, req.query.page);
 
         res.render('index', {
@@ -275,11 +270,8 @@ router.get('/', async (req, res) => {
             search,
             category
         });
-    } catch (error) {
-        console.error('Error loading products:', error);
-        renderError(res, 500, { message: 'No se han podido cargar los productos.' });
-    }
-});
+    })
+);
 
 // ---------- Products (main entity) ----------
 
@@ -287,139 +279,173 @@ router.get('/products/new', (req, res) => {
     renderProductForm(res);
 });
 
-router.post('/products/new', upload.single('image'), async (req, res) => {
-    await saveProduct(req, res, null);
-});
+router.post(
+    '/products/new',
+    upload.single('image'),
+    asyncRoute(async (req, res) => {
+        await saveProduct(req, res, null);
+    })
+);
 
-router.get('/products/:id', async (req, res) => {
-    const product = await findProduct(req.params.id);
-    if (!product) return renderNotFound(res);
+router.get(
+    '/products/:id',
+    asyncRoute(async (req, res) => {
+        const product = await findProduct(req.params.id);
+        if (!product) return renderNotFound(res);
 
-    const productId = product._id.toString();
-    product.reviews = (product.reviews ?? []).map((review) => ({
-        ...review,
-        productId,
-    }));
+        const productId = product._id.toString();
+        product.reviews = (product.reviews ?? []).map((review) => ({ ...review, productId }));
 
-    res.render('detail', { pageTitle: product.title, product });
-});
+        res.render('detail', { pageTitle: product.title, product });
+    })
+);
 
-router.get('/products/:id/edit', async (req, res) => {
-    const product = await findProduct(req.params.id);
-    if (!product) return renderNotFound(res);
+router.get(
+    '/products/:id/edit',
+    asyncRoute(async (req, res) => {
+        const product = await findProduct(req.params.id);
+        if (!product) return renderNotFound(res);
 
-    renderProductForm(res, product);
-});
+        renderProductForm(res, product);
+    })
+);
 
-router.post('/products/:id/edit', upload.single('image'), async (req, res) => {
-    const existing = await findProduct(req.params.id);
+router.post(
+    '/products/:id/edit',
+    upload.single('image'),
+    asyncRoute(async (req, res) => {
+        const existing = await findProduct(req.params.id);
 
-    if (!existing) {
-        await removeUpload(req.file ? '/uploads/' + req.file.filename : null);
-        return renderNotFound(res);
-    }
+        if (!existing) {
+            await removeUpload(req.file ? '/uploads/' + req.file.filename : null);
+            return renderNotFound(res);
+        }
 
-    await saveProduct(req, res, existing);
-});
+        await saveProduct(req, res, existing);
+    })
+);
 
-router.post('/products/:id/delete', async (req, res) => {
-    const product = ObjectId.isValid(req.params.id)
-        ? await products.deleteProduct(req.params.id)
-        : null;
+router.post(
+    '/products/:id/delete',
+    asyncRoute(async (req, res) => {
+        const product = ObjectId.isValid(req.params.id)
+            ? await products.deleteProduct(req.params.id)
+            : null;
 
-    if (!product) return renderNotFound(res);
+        if (!product) return renderNotFound(res);
 
-    await removeUpload(product.image);
+        await removeUpload(product.image);
 
-    renderConfirmation(res, {
-        title: 'Producto eliminado',
-        message: 'El producto y sus reseñas se han eliminado correctamente.',
-        backUrl: '/',
-        backText: 'Volver a la página principal'
-    });
-});
+        renderConfirmation(res, {
+            title: 'Producto eliminado',
+            message: 'El producto y sus reseñas se han eliminado correctamente.',
+            backUrl: '/',
+            backText: 'Volver a la página principal'
+        });
+    })
+);
 
 // ---------- Reviews (secondary entity) ----------
 
-router.post('/products/:id/reviews/new', async (req, res) => {
-    const product = await findProduct(req.params.id);
-    if (!product) return renderNotFound(res);
+router.post(
+    '/products/:id/reviews/new',
+    asyncRoute(async (req, res) => {
+        const product = await findProduct(req.params.id);
+        if (!product) return renderNotFound(res);
 
-    const id = product._id.toString();
-    const review = readReviewForm(req.body);
-    const errors = validateReview(review, product);
+        const id = product._id.toString();
+        const review = readReviewForm(req.body);
+        const errors = validateReview(review, product);
 
-    if (errors.length > 0) {
-        return renderError(res, 400, {
-            message: errors.join(' '),
+        if (errors.length > 0) {
+            return renderError(res, 400, {
+                message: errors.join(' '),
+                backUrl: `/products/${id}`,
+                backText: 'Volver al producto'
+            });
+        }
+
+        // The date is set by the server when the review is created
+        await products.addReview(id, { _id: new ObjectId(), ...review, date: today() });
+
+        renderConfirmation(res, {
+            title: 'Reseña creada',
+            message: 'La reseña se ha creado correctamente.',
             backUrl: `/products/${id}`,
             backText: 'Volver al producto'
         });
-    }
+    })
+);
 
-    await products.addReview(id, { _id: new ObjectId(), ...review });
+router.get(
+    '/products/:id/reviews/:reviewId/edit',
+    asyncRoute(async (req, res) => {
+        const product = await findProduct(req.params.id);
+        const review = findReview(product, req.params.reviewId);
+        if (!review) return renderNotFound(res, 'Reseña no encontrada.');
 
-    renderConfirmation(res, {
-        title: 'Reseña creada',
-        message: 'La reseña se ha creado correctamente.',
-        backUrl: `/products/${id}`,
-        backText: 'Volver al producto'
-    });
-});
-
-router.get('/products/:id/reviews/:reviewId/edit', async (req, res) => {
-    const product = await findProduct(req.params.id);
-    const review = findReview(product, req.params.reviewId);
-    if (!review) return renderNotFound(res, 'Reseña no encontrada.');
-
-    res.render('edit-review', {
-        pageTitle: 'Editar reseña',
-        product,
-        review,
-        ratingOptions: [5, 4, 3, 2, 1].map((value) => ({
-            value,
-            selected: value === Number(review.rating)
-        }))
-    });
-});
-
-router.post('/products/:id/reviews/:reviewId/edit', async (req, res) => {
-    const { id, reviewId } = req.params;
-    const product = await findProduct(id);
-    if (!findReview(product, reviewId)) return renderNotFound(res, 'Reseña no encontrada.');
-
-    const review = readReviewForm(req.body);
-    const errors = validateReview(review, product, reviewId);
-
-    if (errors.length > 0) {
-        return renderError(res, 400, {
-            message: errors.join(' '),
-            backUrl: `/products/${id}/reviews/${reviewId}/edit`,
-            backText: 'Volver a editar la reseña'
+        res.render('edit-review', {
+            pageTitle: 'Editar reseña',
+            product,
+            review,
+            ratingOptions: [5, 4, 3, 2, 1].map((value) => ({
+                value,
+                selected: value === Number(review.rating)
+            }))
         });
-    }
+    })
+);
 
-    await products.updateReview(id, reviewId, review);
+router.post(
+    '/products/:id/reviews/:reviewId/edit',
+    asyncRoute(async (req, res) => {
+        const { id, reviewId } = req.params;
+        const product = await findProduct(id);
+        if (!findReview(product, reviewId)) return renderNotFound(res, 'Reseña no encontrada.');
 
-    renderConfirmation(res, {
-        title: 'Reseña actualizada',
-        message: 'La reseña se ha actualizado correctamente.',
-        backUrl: `/products/${id}`,
-        backText: 'Volver al producto'
-    });
-});
+        const review = readReviewForm(req.body);
+        const errors = validateReview(review, product, reviewId);
 
-router.post('/products/:id/reviews/:reviewId/delete', async (req, res) => {
-    const { id, reviewId } = req.params;
-    const product = await findProduct(id);
-    if (!findReview(product, reviewId)) return renderNotFound(res, 'Reseña no encontrada.');
+        if (errors.length > 0) {
+            return renderError(res, 400, {
+                message: errors.join(' '),
+                backUrl: `/products/${id}/reviews/${reviewId}/edit`,
+                backText: 'Volver a editar la reseña'
+            });
+        }
 
-    await products.deleteReview(id, reviewId);
+        await products.updateReview(id, reviewId, review);
 
-    renderConfirmation(res, {
-        title: 'Reseña eliminada',
-        message: 'La reseña se ha eliminado correctamente.',
-        backUrl: `/products/${id}`,
-        backText: 'Volver al producto'
-    });
+        renderConfirmation(res, {
+            title: 'Reseña actualizada',
+            message: 'La reseña se ha actualizado correctamente.',
+            backUrl: `/products/${id}`,
+            backText: 'Volver al producto'
+        });
+    })
+);
+
+router.post(
+    '/products/:id/reviews/:reviewId/delete',
+    asyncRoute(async (req, res) => {
+        const { id, reviewId } = req.params;
+        const product = await findProduct(id);
+        if (!findReview(product, reviewId)) return renderNotFound(res, 'Reseña no encontrada.');
+
+        await products.deleteReview(id, reviewId);
+
+        renderConfirmation(res, {
+            title: 'Reseña eliminada',
+            message: 'La reseña se ha eliminado correctamente.',
+            backUrl: `/products/${id}`,
+            backText: 'Volver al producto'
+        });
+    })
+);
+
+// ---------- Error handler: shows the error page instead of crashing ----------
+
+router.use((error, req, res, next) => {
+    console.error(error);
+    renderError(res, 500, { message: 'Ha ocurrido un error inesperado. Inténtalo de nuevo.' });
 });
