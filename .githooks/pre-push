@@ -1,9 +1,24 @@
 #!/bin/sh
-# Recordatorio que se muestra antes de cada envío (push)
-echo ""
-echo "=================================================="
-echo " RECUERDA: avisa al equipo de lo que has cambiado."
-echo " Vas a mover, renombrar o borrar ficheros? Pregunta antes."
-echo "=================================================="
-echo ""
-exit 0
+# Asks for confirmation before every push
+
+echo "" >&2
+echo "==================================================" >&2
+echo " RECUERDA: avisa al equipo de lo que has cambiado." >&2
+echo " Vas a mover, renombrar o borrar ficheros? Pregunta antes." >&2
+echo " Deja que tus companeros hagan su parte: no lo hagas todo tu solo." >&2
+echo "==================================================" >&2
+echo "" >&2
+
+# Without an interactive terminal (e.g. VS Code Sync button) the push is not blocked
+if ! (exec < /dev/tty) 2>/dev/null; then
+  echo "Push sin terminal: confirma los cambios con el equipo igualmente." >&2
+  exit 0
+fi
+
+printf "Has avisado al equipo y quieres hacer push? (Y/N): " >&2
+read answer < /dev/tty
+
+case "$answer" in
+  [Yy]) echo "Push confirmado." >&2; exit 0 ;;
+  *) echo "Push cancelado. Avisa al equipo y vuelve a intentarlo." >&2; exit 1 ;;
+esac
