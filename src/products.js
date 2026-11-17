@@ -148,4 +148,48 @@ export async function filterProducts(search = '', category = '', page = 1, limit
     };
 }
 
+export async function updateProduct(id, fields) {
+    return products.updateOne(
+        { _id: new ObjectId(id) },
+        { $set: fields }
+    );
+}
+
+export async function addReview(productId, review) {
+    return products.updateOne(
+        { _id: new ObjectId(productId) },
+        { $push: { reviews: review } }
+    );
+}
+
+
+export async function updateReview(productId, reviewId, review) {
+    return products.updateOne(
+        {
+            _id: new ObjectId(productId),
+            'reviews._id': new ObjectId(reviewId)
+        },
+        {
+            $set: {
+                'reviews.$.title': review.title,
+                'reviews.$.author': review.author,
+                'reviews.$.date': review.date,
+                'reviews.$.rating': review.rating,
+                'reviews.$.text': review.text
+            }
+        }
+    );
+}
+
+export async function deleteReview(productId, reviewId) {
+    return products.updateOne(
+        { _id: new ObjectId(productId) },
+        { $pull: { reviews: { _id: new ObjectId(reviewId) } } }
+    );
+}
+
+
+
+
+
 

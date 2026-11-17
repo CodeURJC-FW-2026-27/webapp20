@@ -1,0 +1,18 @@
+{{> header}}
+
+<main class="container py-5 d-flex justify-content-center">
+    <div class="review-card text-center" style="max-width: 500px; width: 100%;">
+        <h1 class="page-title mb-3">¡Ha ocurrido un error!</h1>
+        <p class="mb-4">{{message}}</p>
+
+        {{#backUrl}}
+        <a href="{{backUrl}}" class="btn-site-primary">{{backText}}</a>
+        {{/backUrl}}
+
+        {{^backUrl}}
+        <a href="/" class="btn-site-primary">Volver al inicio</a>
+        {{/backUrl}}
+    </div>
+</main>
+
+{{> footer}}

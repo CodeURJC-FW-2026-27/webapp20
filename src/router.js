@@ -1,7 +1,7 @@
-
 import express from 'express';
 import multer from 'multer';
 import fs from 'node:fs/promises';
+import { ObjectId } from 'mongodb';
 
 import * as products from './products.js';
 
@@ -9,7 +9,7 @@ const router = express.Router();
 export default router;
 
 const upload = multer({ dest: products.UPLOADS_FOLDER });
-
+const categories = ['Cartas', 'Peluches', 'Figuras', 'Ropa', 'Accesorios'];
 
 router.get('/', async (req, res) => {
     try {
@@ -71,13 +71,71 @@ router.post('/products/new', upload.single('image'), async (req, res) => {
     });
 });
 
-// Product details
+
+function validateProduct(product) {
+    const errors = [];
+
+    if (!product.title.trim()) errors.push('El título es obligatorio.');
+    if (!product.text.trim()) errors.push('La descripción es obligatoria.');
+    if (!categories.includes(product.category)) {
+        errors.push('Selecciona una categoría válida.');
+    }
+    if (
+        product.price === '' ||
+        !Number.isFinite(Number(product.price)) ||
+        Number(product.price) < 0
+    ) {
+        errors.push('Introduce un precio válido.');
+    }
+
+    return errors;
+}
+
+function validateReview(review) {
+    const errors = [];
+
+    if (!review.title) errors.push('El título es obligatorio.');
+    if (!review.author) errors.push('El autor es obligatorio.');
+
+    const date = new Date(`${review.date}T00:00:00.000Z`);
+    if (
+        !/^\d{4}-\d{2}-\d{2}$/.test(review.date) ||
+        Number.isNaN(date.getTime()) ||
+        date.toISOString().slice(0, 10) !== review.date
+    ) {
+        errors.push('Introduce una fecha válida.');
+    }
+
+    if (!Number.isInteger(review.rating) ||
+        review.rating < 1 ||
+        review.rating > 5) {
+        errors.push('La puntuación debe estar entre 1 y 5.');
+    }
+    if (review.text.length < 10 || review.text.length > 300) {
+        errors.push('La reseña debe tener entre 10 y 300 caracteres.');
+    }
+
+    return errors;
+}
+
+
 router.get('/products/:id', async (req, res) => {
-    const product = await products.getProduct(req.params.id);
+    const id = req.params.id;
+
+    if (!ObjectId.isValid(id)) {
+        return res.status(404).render('deleted_product');
+    }
+
+    const product = await products.getProduct(id);
 
     if (!product) {
-        return res.status(404).send('Producto no encontrado');
+        return res.status(404).render('deleted_product');
     }
+
+    product.reviews = (product.reviews || []).map(review => ({
+        ...review,
+        productId: id
+    }));
 
     res.render('detail', { product });
 });
@@ -85,49 +143,26 @@ router.get('/products/:id', async (req, res) => {
 
 // Delete product
 router.post('/products/:id/delete', async (req, res) => {
+    const id = req.params.id;
 
-    let product = await products.deleteProduct(req.params.id);
+    if (!ObjectId.isValid(id)) {
+        return res.status(404).render('deleted_product');
+    }
+
+    const product = await products.deleteProduct(id);
 
     if (!product) {
-        return res.status(404).render('error', {
-            message: 'No se ha encontrado el producto.'
-        });
+        return res.status(404).render('deleted_product');
     }
 
-    if (product && product.imageFilename) {
-        await fs.rm(
-            products.UPLOADS_FOLDER + '/' + product.imageFilename,
-            { force: true }
-        );
-    }
+   if (product.image && product.image.startsWith('/uploads/')) {
+    const filename = product.image.replace('/uploads/', '');
+    await fs.rm(products.UPLOADS_FOLDER + '/' + filename, { force: true });
+}
 
     res.render('deleted_product');
 });
 
-// Download product image
-router.get('/products/:id/image', async (req, res) => {
-    const product = await products.getProduct(req.params.id);
-
-    if (!product || !product.image) {
-        return res.status(404).send('Imagen no encontrada');
-    }
-    
-    if (!imageFilename) {
-        return res.sendStatus(404);
-    }
-    res.download(
-        products.UPLOADS_FOLDER + '/' + product.image.split('/').pop()
-    );
-});
 
 
-// Edit product page
-router.get('/products/:id/edit', async (req, res) => {
-    const product = await products.getProduct(req.params.id);
 
-    if (!product) {
-        return res.status(404).send('Producto no encontrado');
-    }
-
-    res.render('edit-product', { product });
-});

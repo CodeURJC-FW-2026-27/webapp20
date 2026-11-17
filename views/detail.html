@@ -69,7 +69,7 @@
                     <dt>Categoría</dt>
                     <dd>{{product.category}}</dd>
                     <dt>Precio</dt>
-                    <dd class="product-price">{{product.price}}</dd>
+                    <dd class="product-price">{{product.price}} €</dd>
                 </dl>
 
                 <h2 class="section-title">Descripción</h2>
@@ -150,7 +150,11 @@
                 <form class="review-form"
                     action="/products/{{product._id}}/reviews/new"
                     method="POST">
-
+                    {{#error}}<p class="text-danger">{{error}}</p>{{/error}}
+                    <div class="mb-3">
+                        <label class="form-label" for="title">Título de la reseña</label>
+                        <input class="form-control"id="title" name="title" value="{{review.title}}" maxlength="80" required>
+                    </div>
                     <div class="mb-3">
                         <label for="reviewAuthor" class="form-label">Autor</label>
                         <input type="text" class="form-control"

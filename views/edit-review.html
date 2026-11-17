@@ -1,0 +1,86 @@
+{{>header}}
+
+<main class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-8">
+
+            <a href="/products/{{product._id}}"
+               class="btn-site-secondary mb-4">
+                Volver al producto
+            </a>
+
+            <h1 class="page-title mb-4">Editar reseña</h1>
+
+            <article class="review-card mb-4">
+                <div class="d-flex justify-content-between flex-wrap gap-1">
+                    <h2 class="review-author">{{review.author}}</h2>
+                    <span class="review-date">{{review.date}}</span>
+                </div>
+
+                <p class="review-rating mb-2">{{review.rating}} / 5</p>
+                <p class="review-text mb-0">{{review.text}}</p>
+            </article>
+
+            <form class="review-form"
+                  action="/products/{{product._id}}/reviews/{{review._id}}/edit"
+                  method="POST">
+
+                <div class="mb-3">
+                <label class="form-label" for="title">Título de la reseña</label>
+                <input class="form-control" id="title" name="title" value="{{review.title}}" maxlength="80" required>
+</div>
+                <div class="mb-3">
+                    <label class="form-label" for="author">Autor</label>
+                    <input class="form-control"
+                           id="author"
+                           name="author"
+                           value="{{review.author}}"
+                           maxlength="50"
+                           required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="date">Fecha</label>
+                    <input class="form-control"
+                           id="date"
+                           name="date"
+                           type="date"
+                           value="{{review.date}}"
+                           required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="rating">Puntuación (1-5)</label>
+                    <input class="form-control"
+                           id="rating"
+                           name="rating"
+                           type="number"
+                           min="1"
+                           max="5"
+                           value="{{review.rating}}"
+                           required>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label" for="text">Reseña</label>
+                    <textarea class="form-control"
+                              id="text"
+                              name="text"
+                              rows="4"
+                              minlength="10"
+                              maxlength="300"
+                              required>{{review.text}}</textarea>
+                </div>
+
+                <div class="d-flex justify-content-end">
+                    <button class="btn-site-primary" type="submit">
+                        Guardar cambios
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</main>
+
+{{>footer}}
