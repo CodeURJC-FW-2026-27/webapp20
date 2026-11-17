@@ -1,7 +1,12 @@
 {{> header}}
-<main class="container py-5 text-center">
-    <h1 class="page-title mb-4">{{title}}</h1>
-    <p>{{message}}</p>
-    <a class="btn btn-site-primary" href="{{backUrl}}">{{backText}}</a>
+
+<!-- ===== Main content: confirmation message ===== -->
+<main class="container flex-grow-1 py-5 d-flex justify-content-center align-items-start">
+    <div class="review-card message-card text-center">
+        <h1 class="page-title mb-3">{{title}}</h1>
+        <p class="mb-4">{{message}}</p>
+        <a href="{{backUrl}}" class="btn btn-site-primary">{{backText}}</a>
+    </div>
 </main>
+
 {{> footer}}
