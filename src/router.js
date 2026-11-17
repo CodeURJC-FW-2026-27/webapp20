@@ -380,3 +380,35 @@ router.post('/products/:id/reviews/:reviewId/edit', async (req, res) => {
     }
 );
 
+router.post(
+    '/products/:id/reviews/:reviewId/delete',
+    async (req, res) => {
+        const { id, reviewId } = req.params;
+
+        if (!ObjectId.isValid(id) || !ObjectId.isValid(reviewId)) {
+            return res.status(404).render('error', {
+                message: 'Reseña no encontrada.'
+            });
+        }
+
+        const product = await products.getProduct(id);
+        const review = product?.reviews?.find(
+            item => item._id.toString() === reviewId
+        );
+
+        if (!product || !review) {
+            return res.status(404).render('error', {
+                message: 'Reseña no encontrada.'
+            });
+        }
+
+        await products.deleteReview(id, reviewId);
+
+        res.render('confirmation', {
+            title: 'Reseña eliminada',
+            message: 'La reseña se ha eliminado correctamente.',
+            backUrl: `/products/${id}`,
+            backText: 'Volver al producto'
+        });
+    }
+);
