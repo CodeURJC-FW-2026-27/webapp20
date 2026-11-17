@@ -7,20 +7,17 @@ import './load_data.js';
 
 const app = express();
 
-app.use(express.static('./public'));
-
+// Template engine with partials (header and footer)
 app.set('view engine', 'html');
-app.engine('html', mustacheExpress(), ".html");
+app.engine('html', mustacheExpress('./views/partials', '.html'));
 app.set('views', './views');
 
-app.use(bodyParser.urlencoded({ extended: true }));
-
+// Static files and uploaded images
+app.use(express.static('./public'));
 app.use('/uploads', express.static('./uploads'));
+
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/', router);
 
 app.listen(3000, () => console.log('Web ready in http://localhost:3000/'));
-app.engine(
-    'html',
-    mustacheExpress('./views/partials', '.html')
-);
