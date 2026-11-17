@@ -108,11 +108,12 @@
                 {{#product.reviews}}
                 <article class="review-card mb-3">
 
+                    <h3 class="review-title">{{title}}</h3>
                     <div class="d-flex justify-content-between flex-wrap gap-1">
-                        <h3 class="review-author">{{author}}</h3>
+                        <span class="review-author">{{author}}</span>
                         <span class="review-date">{{date}}</span>
                     </div>
-                    <p class="review-rating mb-2">Puntuación: {{rating}} / 5</p>
+                    <p class="review-rating mb-2">{{ratingStars}}</p>
 
                     <p class="review-text">{{text}}</p>
 

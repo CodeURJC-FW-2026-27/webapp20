@@ -66,6 +66,20 @@ function findReview(product, reviewId) {
     return product?.reviews?.find((review) => review._id.toString() === reviewId) ?? null;
 }
 
+function ratingValue(rating) {
+    if (typeof rating === 'string') {
+        const normalized = rating.replace(/\uFE0F/g, '');
+        if (/^⭐{1,5}$/.test(normalized)) return Array.from(normalized).length;
+    }
+
+    const value = Number(rating);
+    return Number.isInteger(value) && value >= 1 && value <= 5 ? value : 0;
+}
+
+function starsForRating(rating) {
+    return '⭐'.repeat(ratingValue(rating));
+}
+
 async function removeUpload(imagePath) {
     if (imagePath?.startsWith('/uploads/')) {
         const filename = imagePath.replace('/uploads/', '');
@@ -294,7 +308,11 @@ router.get(
         if (!product) return renderNotFound(res);
 
         const productId = product._id.toString();
-        product.reviews = (product.reviews ?? []).map((review) => ({ ...review, productId }));
+        product.reviews = (product.reviews ?? []).map((review) => ({
+            ...review,
+            productId,
+            ratingStars: starsForRating(review.rating)
+        }));
 
         res.render('detail', { pageTitle: product.title, product });
     })
@@ -387,10 +405,10 @@ router.get(
         res.render('edit-review', {
             pageTitle: 'Editar reseña',
             product,
-            review,
+            review: { ...review, ratingStars: starsForRating(review.rating) },
             ratingOptions: [5, 4, 3, 2, 1].map((value) => ({
                 value,
-                selected: value === Number(review.rating)
+                selected: value === ratingValue(review.rating)
             }))
         });
     })
