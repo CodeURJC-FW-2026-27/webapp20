@@ -2,171 +2,207 @@
   {
     "title": "Blister 2 Sobres 30 Aniversario (ESPAÑOL)",
     "text": "Blister Pokémon de 2 sobres de la colección especial del 30 aniversario. Una oportunidad perfecta para ampliar tu colección y descubrir nuevas cartas.",
-    "price": "17.99",
+    "price": 17.99,
     "image": "/images/products/30-aniversario-2-pack-blister-v3-ingles.webp",
     "category": "Cartas",
     "reviews": [
       {
+        "title": "Genial para coleccionistas",
         "author": "Ash Ketchum",
         "text": "Una edición genial para coleccionistas. Me han encantado los sobres.",
-        "rating": "5"
+        "rating": 5,
+        "date": "2026-10-02"
       },
       {
+        "title": "Muy buena presentación",
         "author": "Misty Williams",
         "text": "Muy buen producto y excelente presentación.",
-        "rating": "4"
+        "rating": 4,
+        "date": "2026-10-05"
       }
     ]
   },
   {
-    "title": "Pokemon EX Box 30 Aniversario (ESPAÑOL)",
+    "title": "Pokémon EX Box 30 Aniversario (ESPAÑOL)",
     "text": "Caja especial Pokémon EX del 30 aniversario. Incluye cartas coleccionables y contenido exclusivo para los fans de Pokémon.",
-    "price": "34.99",
+    "price": 34.99,
     "image": "/images/products/30aniv-pokemon-ex-box-f1-espanol.webp",
     "category": "Cartas",
     "reviews": [
       {
+        "title": "Imprescindible",
         "author": "Gary Oak",
         "text": "Una caja imprescindible para cualquier coleccionista.",
-        "rating": "5"
+        "rating": 5,
+        "date": "2026-10-03"
       },
       {
+        "title": "Contenido interesante",
         "author": "Brock",
         "text": "Muy bonita y con contenido interesante.",
-        "rating": "4"
+        "rating": 4,
+        "date": "2026-10-08"
       }
     ]
   },
   {
     "title": "30 Aniversario ETB (ESPAÑOL)",
     "text": "Elite Trainer Box especial del 30 aniversario de Pokémon. Ideal para jugadores y coleccionistas que buscan ampliar su colección.",
-    "price": "59.99",
+    "price": 59.99,
     "image": "/images/products/etb_elite_trainer_box_30_aniversario_pokemon.webp",
     "category": "Cartas",
     "reviews": [
       {
+        "title": "Preciosa",
         "author": "Dawn",
         "text": "La presentación es preciosa y merece mucho la pena.",
-        "rating": "5"
+        "rating": 5,
+        "date": "2026-10-04"
       },
       {
+        "title": "Ideal para empezar",
         "author": "Lucas",
         "text": "Muy buena ETB para empezar una colección.",
-        "rating": "4"
+        "rating": 4,
+        "date": "2026-10-10"
       }
     ]
   },
   {
     "title": "POKEMON RESHIRAM EX SAR 168/086 SV11W WHITE FLARE PSA 10 (JAPONÉS)",
     "text": "Carta coleccionable Pokémon Reshiram EX SAR de la expansión White Flare SV11W. Carta japonesa certificada con calificación PSA 10.",
-    "price": "259.90",
+    "price": 259.9,
     "image": "/images/products/transparent-Photoroom_75.webp",
     "category": "Cartas",
     "reviews": [
       {
+        "title": "Espectacular",
         "author": "Red",
         "text": "Una carta espectacular para coleccionistas.",
-        "rating": "5"
+        "rating": 5,
+        "date": "2026-10-06"
       },
       {
+        "title": "Excelente estado",
         "author": "Cynthia",
         "text": "Excelente estado y presentación.",
-        "rating": "5"
+        "rating": 5,
+        "date": "2026-10-12"
       }
     ]
   },
   {
     "title": "POKEMON ZEKROM EX SAR 169/086 SV11B BLACK BOLT PSA 10 (JAPONÉS)",
     "text": "Carta Pokémon Zekrom EX SAR de la expansión Black Bolt SV11B. Edición japonesa certificada por PSA con calificación 10.",
-    "price": "254.99",
+    "price": 254.99,
     "image": "/images/products/transparent-Photoroom_77.webp",
     "category": "Cartas",
     "reviews": [
       {
+        "title": "Increíble",
         "author": "N",
         "text": "Una carta increíble, perfecta para mi colección.",
-        "rating": "5"
+        "rating": 5,
+        "date": "2026-10-07"
       },
       {
+        "title": "Buena adquisición",
         "author": "Ash Ketchum",
         "text": "Muy buena adquisición.",
-        "rating": "4"
+        "rating": 4,
+        "date": "2026-10-14"
       }
     ]
   },
   {
     "title": "PIKACHU SAR 132/106 SV8 SUPER ELECTRIC BREAKER PSA 10 (JAPONÉS)",
     "text": "Carta especial Pikachu SAR de la expansión japonesa Super Electric Breaker SV8. Carta certificada por PSA con calificación 10.",
-    "price": "749.99",
+    "price": 749.99,
     "image": "/images/products/Rh9ioty9Uka6id6sUzFWrw-Photoroom.webp",
     "category": "Cartas",
     "reviews": [
       {
+        "title": "Pieza excepcional",
         "author": "Professor Oak",
         "text": "Una pieza excepcional para cualquier colección.",
-        "rating": "5"
+        "rating": 5,
+        "date": "2026-10-09"
       },
       {
+        "title": "Siempre Pikachu",
         "author": "Leon",
         "text": "Pikachu siempre es una buena elección.",
-        "rating": "5"
+        "rating": 5,
+        "date": "2026-10-15"
       }
     ]
   },
   {
     "title": "Figura articulada Gallade",
     "text": "Figura articulada de Gallade con detalles inspirados en el diseño original del Pokémon. Perfecta para exposición y coleccionismo.",
-    "price": "34.99",
+    "price": 34.99,
     "image": "/images/products/Gallade_figure.webp",
     "category": "Figuras",
     "reviews": [
       {
+        "title": "Detalles increíbles",
         "author": "Dawn",
         "text": "Los detalles de la figura son increíbles.",
-        "rating": "5"
+        "rating": 5,
+        "date": "2026-10-11"
       },
       {
+        "title": "Muy articulada",
         "author": "Barry",
         "text": "Muy buena figura y bastante articulada.",
-        "rating": "4"
+        "rating": 4,
+        "date": "2026-10-16"
       }
     ]
   },
   {
     "title": "Gallade Plushie",
     "text": "Peluche de Gallade suave y de gran calidad. Ideal para coleccionistas y fans de la región de Sinnoh.",
-    "price": "15.99",
+    "price": 15.99,
     "image": "/images/products/Gallade_Plushie.webp",
     "category": "Peluches",
     "reviews": [
       {
+        "title": "Muy suave",
         "author": "Ash Ketchum",
         "text": "Muy suave y bien acabado. Se nota que es un producto oficial.",
-        "rating": "4"
+        "rating": 4,
+        "date": "2026-10-13"
       },
       {
+        "title": "Adorable",
         "author": "Misty Williams",
         "text": "Me encanta, es adorable y tiene muy buenos detalles.",
-        "rating": "5"
+        "rating": 5,
+        "date": "2026-10-18"
       }
     ]
   },
   {
     "title": "Camiseta Pikachu",
     "text": "Camiseta temática de Pikachu con un diseño inspirado en el universo Pokémon. Una prenda ideal para los fans de todas las edades.",
-    "price": "11.99",
+    "price": 11.99,
     "image": "/images/products/Pikachu-Shirt.webp",
     "category": "Ropa",
     "reviews": [
       {
+        "title": "Muy cómoda",
         "author": "Serena",
         "text": "Muy cómoda y el diseño es precioso.",
-        "rating": "5"
+        "rating": 5,
+        "date": "2026-10-17"
       },
       {
+        "title": "Buena calidad",
         "author": "Clemont",
         "text": "Buena calidad por el precio.",
-        "rating": "4"
+        "rating": 4,
+        "date": "2026-10-20"
       }
     ]
   }
