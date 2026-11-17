@@ -1,86 +1,90 @@
-{{>header}}
+{{> header}}
 
-<main class="container py-5">
+<!-- ===== Main content: edit review form ===== -->
+<main class="container flex-grow-1 py-5">
     <div class="row justify-content-center">
         <div class="col-12 col-lg-8">
-
-            <a href="/products/{{product._id}}"
-               class="btn-site-secondary mb-4">
-                Volver al producto
-            </a>
+            <div class="mb-4">
+                <a href="/products/{{product._id}}" class="btn btn-site-secondary">
+                    <i class="bi bi-arrow-left me-1"></i> Volver al producto
+                </a>
+            </div>
 
             <h1 class="page-title mb-4">Editar reseña</h1>
 
+            <!-- Current review -->
             <article class="review-card mb-4">
+                <h2 class="review-title">{{review.title}}</h2>
                 <div class="d-flex justify-content-between flex-wrap gap-1">
-                    <h2 class="review-author">{{review.author}}</h2>
+                    <span class="review-author">{{review.author}}</span>
                     <span class="review-date">{{review.date}}</span>
                 </div>
-
-                <p class="review-rating mb-2">{{review.rating}} / 5</p>
+                <p class="review-rating mb-2">Puntuación: {{review.rating}} / 5</p>
                 <p class="review-text mb-0">{{review.text}}</p>
             </article>
 
-            <form class="review-form"
-                  action="/products/{{product._id}}/reviews/{{review._id}}/edit"
-                  method="POST">
-
+            <!-- Edit form -->
+            <form class="review-form" action="/products/{{product._id}}/reviews/{{review._id}}/edit" method="POST">
                 <div class="mb-3">
-                <label class="form-label" for="title">Título de la reseña</label>
-                <input class="form-control" id="title" name="title" value="{{review.title}}" maxlength="80" required>
-</div>
-                <div class="mb-3">
-                    <label class="form-label" for="author">Autor</label>
-                    <input class="form-control"
-                           id="author"
-                           name="author"
-                           value="{{review.author}}"
-                           maxlength="50"
-                           required>
+                    <label for="reviewTitle" class="form-label">Título de la reseña</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="reviewTitle"
+                        name="title"
+                        value="{{review.title}}"
+                        required
+                        maxlength="80"
+                    />
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label" for="date">Fecha</label>
-                    <input class="form-control"
-                           id="date"
-                           name="date"
-                           type="date"
-                           value="{{review.date}}"
-                           required>
+                    <label for="reviewAuthor" class="form-label">Autor</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="reviewAuthor"
+                        name="author"
+                        value="{{review.author}}"
+                        required
+                        maxlength="50"
+                    />
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label" for="rating">Puntuación (1-5)</label>
-                    <input class="form-control"
-                           id="rating"
-                           name="rating"
-                           type="number"
-                           min="1"
-                           max="5"
-                           value="{{review.rating}}"
-                           required>
+                    <label for="reviewDate" class="form-label">Fecha</label>
+                    <input type="date" class="form-control" id="reviewDate" name="date" value="{{review.date}}" required />
+                </div>
+
+                <div class="mb-3">
+                    <label for="reviewRating" class="form-label">Puntuación</label>
+                    <select class="form-select" id="reviewRating" name="rating" required>
+                        {{#ratingOptions}}
+                        <option value="{{value}}" {{#selected}}selected{{/selected}}>{{value}}</option>
+                        {{/ratingOptions}}
+                    </select>
                 </div>
 
                 <div class="mb-4">
-                    <label class="form-label" for="text">Reseña</label>
-                    <textarea class="form-control"
-                              id="text"
-                              name="text"
-                              rows="4"
-                              minlength="10"
-                              maxlength="300"
-                              required>{{review.text}}</textarea>
+                    <label for="reviewText" class="form-label">Reseña</label>
+                    <textarea
+                        class="form-control"
+                        id="reviewText"
+                        name="text"
+                        rows="4"
+                        required
+                        minlength="10"
+                        maxlength="300"
+                    >{{review.text}}</textarea>
                 </div>
 
-                <div class="d-flex justify-content-end">
-                    <button class="btn-site-primary" type="submit">
-                        Guardar cambios
-                    </button>
+                <div class="d-flex justify-content-end gap-2">
+                    <a href="/products/{{product._id}}" class="btn btn-site-secondary">Cancelar</a>
+                    <button type="submit" class="btn btn-site-primary">Guardar cambios</button>
                 </div>
             </form>
-
         </div>
     </div>
 </main>
 
-{{>footer}}
+{{> footer}}
