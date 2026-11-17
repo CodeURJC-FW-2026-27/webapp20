@@ -238,3 +238,145 @@ router.post('/products/:id/edit', upload.single('image'), async (req, res) => {
 
     res.render('updated_product', { productId: id });
 });
+
+
+
+router.post('/products/:id/reviews/new', async (req, res) => {
+    const id = req.params.id;
+
+    if (!ObjectId.isValid(id)) {
+        return res.status(404).render('error', {
+            message: 'Producto no encontrado.'
+        });
+    }
+
+    const product = await products.getProduct(id);
+
+    if (!product) {
+        return res.status(404).render('error', {
+            message: 'Producto no encontrado.'
+        });
+    }
+
+    const review = {
+        title: (req.body.title || '').trim(),
+        author: (req.body.author || '').trim(),
+        date: (req.body.date || '').trim(),
+        rating: Number(req.body.rating),
+        text: (req.body.text || '').trim()
+    };
+
+    const errors = validateReview(review);
+    const duplicateTitle = (product.reviews || []).some(item =>
+        typeof item.title === 'string' &&
+        item.title.toLowerCase() === review.title.toLowerCase()
+    );
+
+    if (duplicateTitle) {
+        errors.push('Ya existe una reseña con ese título.');
+    }
+
+    if (errors.length > 0) {
+        return res.status(400).render('error', {
+            message: errors.join(' '),
+            backUrl: `/products/${id}`,
+            backText: 'Volver al producto'
+        });
+    }
+
+    await products.addReview(id, {
+        _id: new ObjectId(),
+        ...review
+    });
+
+    res.render('confirmation', {
+        title: 'Reseña creada',
+        message: 'La reseña se ha creado correctamente.',
+        backUrl: `/products/${id}`,
+        backText: 'Volver al producto'
+    });
+});
+
+
+router.get('/products/:id/reviews/:reviewId/edit', async (req, res) => {
+    const { id, reviewId } = req.params;
+
+    if (!ObjectId.isValid(id) || !ObjectId.isValid(reviewId)) {
+        return res.status(404).render('error', {
+            message: 'Reseña no encontrada.'
+        });
+    }
+
+    const product = await products.getProduct(id);
+    const review = product?.reviews?.find(
+        item => item._id.toString() === reviewId
+    );
+
+    if (!product || !review) {
+        return res.status(404).render('error', {
+            message: 'Reseña no encontrada.'
+        });
+    }
+
+    res.render('edit-review', { product, review });
+});
+
+
+router.post('/products/:id/reviews/:reviewId/edit', async (req, res) => {
+        const { id, reviewId } = req.params;
+
+        if (!ObjectId.isValid(id) || !ObjectId.isValid(reviewId)) {
+            return res.status(404).render('error', {
+                message: 'Reseña no encontrada.'
+            });
+        }
+
+        const product = await products.getProduct(id);
+        const existingReview = product?.reviews?.find(
+            item => item._id.toString() === reviewId
+        );
+
+        if (!product || !existingReview) {
+            return res.status(404).render('error', {
+                message: 'Reseña no encontrada.'
+            });
+        }
+
+        const updatedReview = {
+            title: (req.body.title || '').trim(),
+            author: (req.body.author || '').trim(),
+            date: (req.body.date || '').trim(),
+            rating: Number(req.body.rating),
+            text: (req.body.text || '').trim()
+        };
+
+        const errors = validateReview(updatedReview);
+        const duplicateTitle = (product.reviews || []).some(item =>
+            item._id.toString() !== reviewId &&
+            typeof item.title === 'string' &&
+            item.title.toLowerCase() === updatedReview.title.toLowerCase()
+        );
+
+        if (duplicateTitle) {
+            errors.push('Ya existe una reseña con ese título.');
+        }
+
+        if (errors.length > 0) {
+            return res.status(400).render('error', {
+                message: errors.join(' '),
+                backUrl: `/products/${id}/reviews/${reviewId}/edit`,
+                backText: 'Volver a editar la reseña'
+            });
+        }
+
+        await products.updateReview(id, reviewId, updatedReview);
+
+        res.render('confirmation', {
+            title: 'Reseña actualizada',
+            message: 'La reseña se ha actualizado correctamente.',
+            backUrl: `/products/${id}`,
+            backText: 'Volver al producto'
+        });
+    }
+);
+
