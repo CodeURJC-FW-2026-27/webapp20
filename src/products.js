@@ -86,7 +86,6 @@ export async function updateReview(productId, reviewId, review) {
             $set: {
                 'reviews.$.title': review.title,
                 'reviews.$.author': review.author,
-                'reviews.$.date': review.date,
                 'reviews.$.rating': review.rating,
                 'reviews.$.text': review.text
             }
