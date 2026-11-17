@@ -44,7 +44,7 @@
                     <input class="form-control me-2" type="search"
                         placeholder="Buscar productos..." aria-label="Buscar">
                     <button class="btn btn-site-secondary" type="button">
-                        <i class="bi bi-search"></i> Buscar
+                        <i class="bi bi-search"></i>
                     </button>
                 </form>
             </div>
@@ -73,8 +73,7 @@
                 </dl>
 
                 <h2 class="section-title">Descripción</h2>
-                <p class="mb-4">{{product.text}}</p>
-
+                <p class="product-description mb-4">{{product.text}}</p>
                 <!-- Main entity actions -->
                 <div class="d-flex flex-wrap justify-content-end gap-2">
 
@@ -160,11 +159,6 @@
                             required maxlength="50" />
                     </div>
 
-                    <div class="mb-3">
-                        <label for="reviewDate" class="form-label">Fecha</label>
-                        <input type="date" class="form-control"
-                            id="reviewDate" name="date" required />
-                    </div>
 
                     <div class="mb-3">
                         <label for="reviewRating" class="form-label">Puntuación</label>

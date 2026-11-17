@@ -19,24 +19,26 @@ body {
   background-color: var(--color-light);
   color: var(--color-text);
   font-family: "Trebuchet MS", Arial, sans-serif;
+  /* Long words or links never overflow their container */
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 /* ---------- Titles (same style on every page) ---------- */
-.main-page-title, .page-title {
+.main-page-title,
+.page-title {
   color: var(--color-dark);
   font-family: "Nabla", sans-serif;
+  font-weight: 700;
+  overflow-wrap: anywhere;
 }
 
 .main-page-title {
   font-size: 4.2rem;
-  font-weight: 700;
-
 }
 
 .page-title {
   font-size: 1.8rem;
-  font-weight: 700;
-
 }
 
 .section-title {
@@ -146,7 +148,7 @@ body {
   /* Dark overlay on top of the image so the text stays readable */
   background-image:
     linear-gradient(rgba(20, 33, 61, 0.8), rgba(20, 33, 61, 0.8)),
-    url("../images/hero-banner.jpeg");
+    url("images/hero-banner.jpeg");
   background-size: cover;
   background-position: center;
   color: var(--color-white);
@@ -191,6 +193,7 @@ body {
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--color-dark);
+  overflow-wrap: anywhere;
 }
 
 .product-price {
@@ -198,7 +201,12 @@ body {
   color: var(--color-primary);
 }
 
-/* ---------- Image panel (new product and detail pages) ---------- */
+.product-description {
+  overflow-wrap: anywhere;
+  white-space: pre-line;
+}
+
+/* ---------- Image panel (product form and detail pages) ---------- */
 .image-panel {
   min-height: 400px;
   background-color: var(--color-white);
@@ -232,13 +240,20 @@ body {
   border-radius: var(--radius);
   padding: 1.25rem;
   box-shadow: var(--shadow-soft);
+  /* Long words or links break inside the card instead of overflowing */
+  overflow-wrap: anywhere;
+}
+
+.review-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-dark);
+  margin-bottom: 0.25rem;
 }
 
 .review-author {
-  font-size: 1.1rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--color-dark);
-  margin-bottom: 0;
 }
 
 .review-date {
@@ -248,6 +263,13 @@ body {
 
 .review-rating {
   color: var(--color-secondary-dark);
+  font-weight: 600;
+}
+
+/* ---------- Confirmation and error pages ---------- */
+.message-card {
+  width: 100%;
+  max-width: 500px;
 }
 
 /* ---------- Footer ---------- */
