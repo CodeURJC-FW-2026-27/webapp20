@@ -48,20 +48,20 @@
 
         <!-- Form -->
         <div class="col-12 col-lg-7">
-          <form>
+          <form action="/products/new" method="POST" enctype="multipart/form-data">
             <div class="mb-3">
               <label for="productName" class="form-label">Nombre del producto</label>
-              <input type="text" class="form-control" id="productName" placeholder="Ej. Carta Charizard"/>
+              <input type="text" class="form-control" id="productName" name="title" maxlength="100" placeholder="Ej. Carta Charizard" required/>
             </div>
 
             <div class="mb-3">
               <label for="description" class="form-label">Descripción</label>
-              <textarea class="form-control" id="description" rows="4" placeholder="Escribe una breve descripción del producto"></textarea>
+              <textarea class="form-control" id="description" name="text" rows="4" placeholder="Escribe una breve descripción del producto" required></textarea>
             </div>
 
             <div class="mb-3">
               <label for="category" class="form-label">Categoría</label>
-              <select class="form-select" id="category">
+              <select class="form-select" id="category" name="category" required>
                 <option disabled selected value="">Selecciona una categoría</option>
                 <option>Cartas</option>
                 <option>Peluches</option>
@@ -73,12 +73,12 @@
 
             <div class="mb-3">
               <label for="price" class="form-label">Precio</label>
-              <input type="number" min="0" step="0.01" class="form-control" id="price" placeholder="Ej. 29.99 €" required/>
+              <input type="number" name="price" min="0" step="0.01" class="form-control" id="price" placeholder="Ej. 29.99 €" required/>
             </div>
 
             <div class="mb-4">
               <label for="file" class="form-label">Imagen del producto</label>
-              <input type="file" class="form-control" id="file" accept=".png,.jpg,.jpeg" required/>
+              <input type="file" name="image" class="form-control" id="file" accept=".png,.jpg,.jpeg" required/>
             </div>
 
             <div class="d-flex justify-content-end gap-2">

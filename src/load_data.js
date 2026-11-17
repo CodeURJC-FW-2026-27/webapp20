@@ -13,27 +13,25 @@ const dataString = await fs.readFile(DATA_FOLDER + '/' + dataFile, 'utf8');
 
 const productsList = JSON.parse(dataString);
 
-await products.deleteProducts();
 await fs.mkdir(UPLOADS_FOLDER, { recursive: true });
 
+if (await products.countProducts() === 0) {
+    for (const product of productsList) {
+        if (!Array.isArray(product.reviews)) {
+            product.reviews = [];
+        }
 
-for (const product of productsList) {
-    if (!Array.isArray(product.reviews)) {
-        product.reviews = [];
+        product.reviews = product.reviews.map(review => ({
+            _id: new ObjectId(),
+            author: review.author,
+            text: review.text,
+            rating: review.rating,
+            date: review.date || new Date().toISOString().slice(0, 10)
+        }));
+
+        await products.addProduct(product);
     }
-
-    product.reviews = product.reviews.map(review => ({
-        _id: new ObjectId(),
-        author: review.author,
-        text: review.text,
-        rating: review.rating,
-        date: review.date || new Date().toISOString().slice(0, 10)
-    }));
-
-    await products.addProduct(product);
+    console.log('Demo data loaded');
+} else {
+    console.log('Existing products preserved');
 }
-
-await fs.rm(UPLOADS_FOLDER, { recursive: true, force: true });
-await fs.mkdir(UPLOADS_FOLDER);
-
-console.log('Demo data loaded');

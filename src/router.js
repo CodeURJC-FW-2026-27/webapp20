@@ -1,6 +1,7 @@
 import express from 'express';
 import multer from 'multer';
 import fs from 'node:fs/promises';
+import { extname } from 'node:path';
 import { ObjectId } from 'mongodb';
 
 import * as products from './products.js';
@@ -55,40 +56,107 @@ router.get('/new-product.html', (req, res) => {
 
 // Create new product
 router.post('/products/new', upload.single('image'), async (req, res) => {
+    const body = req.body || {};
     const product = {
-        user: req.body.user,
-        title: req.body.title,
-        text: req.body.text,
-        price: req.body.price,
-        category: req.body.category,
+        title: trimmedField(body.title),
+        text: trimmedField(body.text),
+        price: trimmedField(body.price),
+        category: trimmedField(body.category),
         image: req.file ? '/uploads/' + req.file.filename : undefined
     };
 
-    const result = await products.addProduct(product);
+    const errors = validateProduct(product);
+    if (!req.file) {
+        errors.push('Selecciona una imagen para el producto.');
+    } else if (!(await isAllowedProductImage(req.file))) {
+        errors.push('La imagen debe ser un archivo PNG o JPEG válido.');
+    }
 
-    res.render('saved_product', {
-        _id: result.insertedId.toString()
-    });
+    if (errors.length > 0) {
+        if (req.file) {
+            await fs.rm(products.UPLOADS_FOLDER + '/' + req.file.filename,
+                { force: true }
+            );
+        }
+        return res.status(400).render('error', {
+            message: errors.join(' '),
+            backUrl: '/new-product.html',
+            backText: 'Volver a añadir producto'
+        });
+    }
+
+    product.price = Number(product.price);
+
+    try {
+        const result = await products.addProduct(product);
+        return res.render('confirmation', {
+            title: 'Producto creado',
+            message: 'El producto se ha añadido correctamente.',
+            backUrl: `/products/${result.insertedId}`,
+            backText: 'Ver producto'
+        });
+    } catch (error) {
+        console.error('Error creating product:', error);
+        if (req.file) {
+            await fs.rm(products.UPLOADS_FOLDER + '/' + req.file.filename,
+                { force: true }
+            );
+        }
+        return res.status(500).render('error', {
+            message: 'No se pudo guardar el producto. Inténtalo de nuevo.'
+        });
+    }
 });
 
 
 function validateProduct(product) {
     const errors = [];
 
-    if (!product.title.trim()) errors.push('El título es obligatorio.');
-    if (!product.text.trim()) errors.push('La descripción es obligatoria.');
+    if (!product.title) errors.push('El título es obligatorio.');
+    if (product.title.length > 100) {
+        errors.push('El título no puede superar los 100 caracteres.');
+    }
+    if (!product.text) errors.push('La descripción es obligatoria.');
     if (!categories.includes(product.category)) {
         errors.push('Selecciona una categoría válida.');
     }
     if (
-        product.price === '' ||
+        !/^\d+(?:\.\d{1,2})?$/.test(product.price) ||
         !Number.isFinite(Number(product.price)) ||
         Number(product.price) < 0
     ) {
-        errors.push('Introduce un precio válido.');
+        errors.push('Introduce un precio válido con un máximo de dos decimales.');
     }
 
     return errors;
+}
+
+function trimmedField(value) {
+    return typeof value === 'string' ? value.trim() : '';
+}
+
+async function isAllowedProductImage(file) {
+    const extension = extname(file.originalname).toLowerCase();
+    const handle = await fs.open(file.path, 'r');
+
+    try {
+        const header = Buffer.alloc(8);
+        const { bytesRead } = await handle.read(header, 0, header.length, 0);
+        const isPng = extension === '.png' &&
+            file.mimetype === 'image/png' &&
+            bytesRead === 8 &&
+            header.equals(Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]));
+        const isJpeg = ['.jpg', '.jpeg'].includes(extension) &&
+            file.mimetype === 'image/jpeg' &&
+            bytesRead >= 3 &&
+            header[0] === 0xff &&
+            header[1] === 0xd8 &&
+            header[2] === 0xff;
+
+        return isPng || isJpeg;
+    } finally {
+        await handle.close();
+    }
 }
 
 function validateReview(review) {

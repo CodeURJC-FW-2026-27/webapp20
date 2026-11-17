@@ -26,6 +26,10 @@ export async function deleteProducts() {
     return await products.deleteMany();
 }
 
+export async function countProducts() {
+    return await products.countDocuments();
+}
+
 // Retrieve products with pagination
 export async function getProducts(page = 1, limit = 6) {
     const totalProducts = await products.countDocuments();
