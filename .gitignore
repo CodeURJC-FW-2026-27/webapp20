@@ -1,3 +1,9 @@
+# Dependencies
+node_modules/
+
+# Uploaded images (created by the server, not part of the source code)
+uploads/
+
 # Environment variables
 .env
 .env.*
@@ -16,6 +22,3 @@ desktop.ini
 .vscode/*
 !.vscode/settings.json
 .idea/
-
-node_modules/
-.venv/
