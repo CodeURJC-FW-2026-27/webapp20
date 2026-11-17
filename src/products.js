@@ -1,4 +1,4 @@
-import { MongoClient, ObjectId.createFromHexString(} from 'mongodb';
+import { MongoClient, ObjectId } from 'mongodb';
 
 const client = new MongoClient('mongodb://localhost:27017');
 await client.connect();
@@ -22,7 +22,7 @@ export async function addProduct(product) {
 }
 
 export async function getProduct(id) {
-    return await products.findOne({ _id: new ObjectId.createFromHexString(id) });
+    return await products.findOne({ _id: ObjectId.createFromHexString(id) });
 }
 
 // Case-insensitive exact match, used to check that names are unique
@@ -33,12 +33,12 @@ export async function findProductByTitle(title) {
 }
 
 export async function updateProduct(id, fields) {
-    return await products.updateOne({ _id: new ObjectId.createFromHexString(id) }, { $set: fields });
+    return await products.updateOne({ _id: ObjectId.createFromHexString(id) }, { $set: fields });
 }
 
 // Returns the deleted product, so its image can be removed
 export async function deleteProduct(id) {
-    return await products.findOneAndDelete({ _id: new ObjectId.createFromHexString(id) });
+    return await products.findOneAndDelete({ _id: ObjectId.createFromHexString(id) });
 }
 
 // Lists products filtered by name and category, paginated in the database
@@ -74,14 +74,14 @@ export async function getProducts(search = '', category = '', page = 1, pageSize
 
 export async function addReview(productId, review) {
     return await products.updateOne(
-        { _id: new ObjectId.createFromHexString(productId) },
+        { _id: ObjectId.createFromHexString(productId) },
         { $push: { reviews: review } }
     );
 }
 
 export async function updateReview(productId, reviewId, review) {
     return await products.updateOne(
-        { _id: new ObjectId.createFromHexString(productId), 'reviews._id': new ObjectId.createFromHexString(reviewId) },
+        { _id: ObjectId.createFromHexString(productId), 'reviews._id': ObjectId.createFromHexString(reviewId) },
         {
             $set: {
                 'reviews.$.title': review.title,
@@ -96,7 +96,7 @@ export async function updateReview(productId, reviewId, review) {
 
 export async function deleteReview(productId, reviewId) {
     return await products.updateOne(
-        { _id: new ObjectId.createFromHexString(productId) },
-        { $pull: { reviews: { _id: new ObjectId.createFromHexString(reviewId) } } }
+        { _id: ObjectId.createFromHexString(productId) },
+        { $pull: { reviews: { _id: ObjectId.createFromHexString(reviewId) } } }
     );
 }
