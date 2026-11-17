@@ -329,22 +329,27 @@ When the application starts with an empty database, it loads the sample products
 #### Sergio Alejandro Romero
 
 **Tasks:**
-- TODO
+- Acted as the reviewer of the team: checked the whole application against the requirements of the assignment and fixed the issues found.
+- Unified the creation and edition of products in a single form and a single processing function, as required by the assignment.
+- Added full server-side validation of products: unique name, capital letter, description length, price range and image type.
+- Removed duplicated code: one listing function for search, categories and pagination, shared helpers in the router, and a single confirmation page.
+- Added error handling so the server shows an error page instead of crashing, and fixed the Mustache partials configuration.
+- Fixed the sample data (numeric prices and ratings, review titles) and set the review date automatically.
+- Removed the uploads folder from the repository and added it to the `.gitignore`.
 
 **5 most significant commits:**
-1. [TODO](LINK)
-2. [TODO](LINK)
-3. [TODO](LINK)
-4. [TODO](LINK)
-5. [TODO](LINK)
+1. [refactor(router): reuse product form logic, add full validation and helpers](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/5892882)
+2. [refactor(form): reuse product form for create and edit](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/f36a2a1)
+3. [refactor(products): merge listing functions and escape search text](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/5a9ccc7)
+4. [refactor(views): remove duplicated confirmation pages](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/83a8dae)
+5. [fix(data): add review titles and dates, use numbers for price and rating](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/994786a)
 
 **5 files with most participation:**
-1. [TODO](LINK)
-2. [TODO](LINK)
-3. [TODO](LINK)
-4. [TODO](LINK)
-5. [TODO](LINK)
-
+1. [src/router.js](https://github.com/CodeURJC-FW-2026-27/webapp20/blob/main/src/router.js)
+2. [src/products.js](https://github.com/CodeURJC-FW-2026-27/webapp20/blob/main/src/products.js)
+3. [views/new-product.html](https://github.com/CodeURJC-FW-2026-27/webapp20/blob/main/views/new-product.html)
+4. [views/detail.html](https://github.com/CodeURJC-FW-2026-27/webapp20/blob/main/views/detail.html)
+5. [views/partials/header.html](https://github.com/CodeURJC-FW-2026-27/webapp20/blob/main/views/partials/header.html)
 ---
 
 #### Alvaro Martin Jurado
