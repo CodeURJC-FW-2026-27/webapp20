@@ -1,27 +1,22 @@
-
-<!doctype html>
 {{> header}}
 
-    <!-- Hero header -->
-    <header class="site-hero py-5">
-      <div class="container text-center">
+<!-- ===== Hero: main banner with site title ===== -->
+<header class="site-hero py-5">
+    <div class="container text-center">
         <h1 class="main-page-title">PokeURJC</h1>
         <p class="lead mb-0">Tu tienda de productos Pokémon</p>
-      </div>
-    </header>
+    </div>
+</header>
 
-    <!-- Main content -->
-    <main class="container py-4">
-
-      <div class="d-flex justify-content-end mb-4">
-        <a class="btn-site-primary" href="/new-product.html">
-          Crear nuevo elemento
+<!-- ===== Main content: product catalog ===== -->
+<main class="container flex-grow-1 py-4">
+    <div class="d-flex justify-content-end mb-4">
+        <a class="btn btn-site-primary" href="/products/new">
+            <i class="bi bi-plus-lg me-1"></i> Crear nuevo elemento
         </a>
-      </div>
+    </div>
 
-      <!-- Products section -->
-      <section>
-
+    <section>
         <h2 class="section-title mb-4">Nuestros productos</h2>
 
         <!-- Active filters -->
@@ -33,102 +28,52 @@
         <p>Categoría seleccionada: <strong>{{category}}</strong></p>
         {{/category}}
 
+        <!-- Product grid: 1 column on mobile, 2 on tablets, 3 on desktop -->
         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+            {{#products}}
+            <div class="col">
+                <a href="/products/{{_id}}" class="card product-card h-100">
+                    <img src="{{image}}" class="card-img-top product-image" alt="{{title}}" />
+                    <div class="card-body text-center">
+                        <h3 class="product-name">{{title}}</h3>
+                        <p class="product-price mb-0">{{price}} €</p>
+                    </div>
+                </a>
+            </div>
+            {{/products}}
 
-          <!-- Product cards -->
-          {{#posts}}
-          <div class="col">
-
-            <a
-              href="/products/{{_id}}"
-              class="card product-card h-100"
-            >
-
-              <img
-                src="{{image}}"
-                class="card-img-top product-image"
-                alt="{{title}}"
-              />
-
-              <div class="card-body text-center">
-
-                <h4 class="product-name">{{title}}</h4>
-
-                <p class="product-price mb-0">
-                  {{price}} € 
-                </p>
-
-              </div>
-
-            </a>
-          </div>
-          {{/posts}}
-
-          <!-- No products found -->
-          {{^posts}}
-          <div class="col-12">
-            <p>No se han encontrado productos.</p>
-          </div>
-          {{/posts}}
-
+            {{^products}}
+            <div class="col-12">
+                <p>No se han encontrado productos.</p>
+            </div>
+            {{/products}}
         </div>
 
         <!-- Pagination -->
-        <nav aria-label="Product pagination" class="mt-5">
+        <nav aria-label="Paginación de productos" class="mt-5">
+            <ul class="pagination justify-content-center">
+                <li class="page-item {{^hasPrev}}disabled{{/hasPrev}}">
+                    <a class="page-link" href="/?page={{prevPage}}&search={{search}}&category={{category}}">
+                        Anterior
+                    </a>
+                </li>
 
-          <ul class="pagination justify-content-center">
+                {{#pages}}
+                <li class="page-item {{#isCurrent}}active{{/isCurrent}}">
+                    <a class="page-link" href="/?page={{number}}&search={{search}}&category={{category}}">
+                        {{number}}
+                    </a>
+                </li>
+                {{/pages}}
 
-            <!-- Previous page -->
-            <li class="page-item {{^hasPrev}}disabled{{/hasPrev}}">
-
-              <a
-                class="page-link"
-                href="/?page={{prevPage}}&search={{search}}&category={{category}}"
-              >
-                Anterior
-              </a>
-
-            </li>
-
-            <!-- Page numbers -->
-            {{#pages}}
-            <li class="page-item {{#isCurrent}}active{{/isCurrent}}">
-
-              <a
-                class="page-link"
-                href="/?page={{number}}&search={{search}}&category={{category}}"
-              >
-                {{number}}
-              </a>
-
-            </li>
-            {{/pages}}
-
-            <!-- Next page -->
-            <li class="page-item {{^hasNext}}disabled{{/hasNext}}">
-
-              <a
-                class="page-link"
-                href="/?page={{nextPage}}&search={{search}}&category={{category}}"
-              >
-                Siguiente
-              </a>
-
-            </li>
-
-          </ul>
-
+                <li class="page-item {{^hasNext}}disabled{{/hasNext}}">
+                    <a class="page-link" href="/?page={{nextPage}}&search={{search}}&category={{category}}">
+                        Siguiente
+                    </a>
+                </li>
+            </ul>
         </nav>
+    </section>
+</main>
 
-      </section>
-
-    </main>
-
-    <!-- Footer -->
-    {{> footer}}
-
-    <!-- Bootstrap JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-  </body>
-</html>
+{{> footer}}
