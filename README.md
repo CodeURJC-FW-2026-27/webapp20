@@ -309,21 +309,24 @@ On every start, the application copies the sample product images from `data/` to
 #### Ignacio Roncero Medina
 
 **Tasks:**
-- TODO
+- Implemented funcitonal ¨New Product¨.
+- Reviewd the whole web in search for problems later solved himself.
+- Got header working in all pages.
+- Changed the routing of the images to the correct folders.
+- Fixed some reviews atributes problems.
 
 **5 most significant commits:**
-1. [TODO](LINK)
-2. [TODO](LINK)
-3. [TODO](LINK)
-4. [TODO](LINK)
-5. [TODO](LINK)
+1. [Creación de nuevo elemento y comprobaciones de servidor de formulario de creación de nuevo elemento.](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/343284a2402d584e28cf2df2f05ae53e2f0f6778)
+2. [Visualización correcta de los títulos y puntuajes de las reviews](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/f134e06244001ea7e0b81099b2691ecc4e40619d)
+3. [Header funcional en todas las vistas](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/1395f40eb0a1ce27ad91bbf60a223b53a54e41cc)
+4. [Imagenes de la demo en carpeta data](https://github.com/CodeURJC-FW-2026-27/webapp20/commit/183ba91f4e2eeaf16f35690704a88d4f549a6432)
 
 **5 files with most participation:**
-1. [TODO](LINK)
-2. [TODO](LINK)
-3. [TODO](LINK)
-4. [TODO](LINK)
-5. [TODO](LINK)
+1. [src/router.js](https://github.com/CodeURJC-FW-2026-27/webapp20/blob/main/src/router.js)
+2. [src/load_data.js](https://github.com/CodeURJC-FW-2026-27/webapp20/blob/main/src/load_data.js)
+3. [src/product.js](https://github.com/CodeURJC-FW-2026-27/webapp20/blob/main/src/products.js)
+4. [views/new-product.html](https://github.com/CodeURJC-FW-2026-27/webapp20/blob/main/views/new-product.html)
+5. [views/detail.html](https://github.com/CodeURJC-FW-2026-27/webapp20/blob/main/views/detail.html)
 
 ---
 
