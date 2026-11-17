@@ -1,5 +1,5 @@
 #!/bin/sh
-# Asks for confirmation before every push
+# Asks two confirmations before every push
 
 echo "" >&2
 echo "==================================================" >&2
@@ -15,10 +15,18 @@ if ! (exec < /dev/tty) 2>/dev/null; then
   exit 0
 fi
 
-printf "Has avisado al equipo y quieres hacer push? (Y/N): " >&2
-read answer < /dev/tty
+# Cancels the push unless the answer is Y
+confirm() {
+  printf "%s (Y/N): " "$1" >&2
+  read answer < /dev/tty
+  case "$answer" in
+    [Yy]) ;;
+    *) echo "Push cancelado. $2" >&2; exit 1 ;;
+  esac
+}
 
-case "$answer" in
-  [Yy]) echo "Push confirmado." >&2; exit 0 ;;
-  *) echo "Push cancelado. Avisa al equipo y vuelve a intentarlo." >&2; exit 1 ;;
-esac
+confirm "1/2 Has avisado al equipo de tus cambios?" "Avisa al equipo y vuelve a intentarlo."
+confirm "2/2 Has dejado a tus companeros su parte del trabajo?" "Reparte las tareas con el equipo y vuelve a intentarlo."
+
+echo "Push confirmado." >&2
+exit 0
