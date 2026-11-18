@@ -231,7 +231,7 @@ Make **one commit per change**, not one huge commit at the end of the day.
 
 ### Video
 
-[![PokeURJC demo](https://img.youtube.com/vi/VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=VIDEO_ID)
+[![PokeURJC demo](https://youtu.be/0XGtOPKR2DY)](https://youtu.be/0XGtOPKR2DY)
 
 ### Running Instructions
 
